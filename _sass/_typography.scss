@@ -1,0 +1,22 @@
+@import "//fonts.googleapis.com/css?family=Nunito|Raleway|Roboto";
+
+$font-family-text: "Raleway", sans-serif;
+$font-family-display: 'Roboto', sans-serif;
+
+@mixin headings($from: 1, $to: 6) {
+  @for $i from $from through $to {
+    h#{$i} {
+      @content
+    }
+  }
+}
+
+@include headings() {
+  font-family: 'Nunito', sans-serif;
+}
+
+.label {
+  font-family: 'Roboto', sans-serif;
+}
+
+$heading-dark: #3b3b3b;

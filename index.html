@@ -3,27 +3,29 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="icon" sizes="192x192" href="/assets/resume.ico">
-    <title>Résumé</title>
+    <link rel="icon" sizes="192x192" href="assets/resume.ico">
+    <title>Résumé - Jonathan Yee</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/default.css">
 </head>
 
 <body>
-    <section>
-        <h2>Contact Information</h2>
-        <div>
-            <div>
-                <span aria-label="Name">Jonathan Zuan Sheng Yee</span>
+    <section class="section first section-contact">
+        <h2 class="section-title">Contact Information</h2>
+        <div class="contact-container">
+            <div class="contact-item">
+                <span aria-label="Name" class="text-focus-main">Jonathan Zuan Sheng Yee</span>
             </div>
-            <div>
-                <span aria-label="Location">Brisbane, Australia</span>
+            <div class="contact-item">
+                <span aria-label="Location" class="text-focus-secondary">Brisbane, Australia</span>
             </div>
-            <div>
+            <div class="contact-item">
                 <span aria-label="Email"><a href="mailto:jonyeezs@gmail.com">jonyeezs@gmail.com</a></span>
             </div>
-            <div>
+            <div class="contact-item">
                 <span aria-label="Mobile"><a href="tel:+61400000000">+614 ********</a></span>
             </div>
-            <div>
+            <div class="contact-item">
                 <ul aria-label="Social Media">
                     <li>
                         <a href="https://twitter.com/heyjonyee" target="_blank">
@@ -44,8 +46,8 @@
             </div>
         </div>
     </section>
-    <section>
-        <h2>Expertise</h2>
+    <section class="section second section-expertise">
+        <h2 class="section-title">Expertise</h2>
         <div>
             <div aria-label="Role">
                 <div>Full-stack Developer</div>
@@ -60,6 +62,7 @@
                     <li>UX Design</li>
                     <li>Clean Code</li>
                     <li>Automation</li>
+                    <li>Seeing Others Excel</li>
                 </ul>
             </div>
             <div aria-label="Language Proficiency">
@@ -86,10 +89,11 @@
                             </td>
                             <td>
                                 <div>CSS</div>
-                                <div>HTML5</div>
                                 <div>C#</div>
+                                <div>TypeScript</div>
                             </td>
                             <td>
+                                <div>HTML5</div>
                                 <div>AngularJS</div>
                                 <div>Angular</div>
                                 <div>Javascript</div>
@@ -100,8 +104,8 @@
             </div>
         </div>
     </section>
-    <section>
-        <h2>Achievements</h2>
+    <section class="section third section-achievement">
+        <h2 class="section-title">Achievements</h2>
         <div>
             <div>
                 <h3>2015 - current</h3>
@@ -117,7 +121,7 @@
                             </div>
                         </li>
                         <li>
-                            <div>Increase the teams overall skills in Angular</div>
+                            <div>Increase the teams overall skills in Angular(/JS)</div>
                             <div>
                                 <p>Encouraged and introduce better code structure (eg: feature module structure), advance toolings (eg: reactive forms), and help coach team members.</p>
                                 <p>It was encouraging to see everyone improving and growing in confidence on understanding the framework after informal coaching sessions with teams and individuals.</p>
@@ -170,9 +174,8 @@
                     </ul>
                 </li>
                 </div>
-            </div>            
+            </div>
         </div>
     </section>
 </body>
-
 </html>

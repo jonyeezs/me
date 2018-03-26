@@ -1,0 +1,72 @@
+@import "//fonts.googleapis.com/css?family=Nunito|Raleway|Roboto";
+h1 {
+  font-family: 'Nunito', sans-serif; }
+
+h2 {
+  font-family: 'Nunito', sans-serif; }
+
+h3 {
+  font-family: 'Nunito', sans-serif; }
+
+h4 {
+  font-family: 'Nunito', sans-serif; }
+
+h5 {
+  font-family: 'Nunito', sans-serif; }
+
+h6 {
+  font-family: 'Nunito', sans-serif; }
+
+.label {
+  font-family: 'Roboto', sans-serif; }
+
+body {
+  display: flex;
+  flex-direction: column; }
+
+.section {
+  margin: 0 auto;
+  width: 60vw; }
+  .section .first {
+    order: 1; }
+  .section .second {
+    order: 2; }
+  .section .third {
+    order: 3; }
+  .section-contact {
+    flex-grow: 1; }
+  .section-expertise {
+    flex-grow: 2; }
+  .section-achievement {
+    flex-grow: 3; }
+
+.section-title {
+  border-bottom: #bbbbbb 1px solid;
+  color: #bbbbbb;
+  font-size: 1.2em;
+  font-weight: 500;
+  padding-bottom: 15px;
+  text-transform: uppercase; }
+
+.hide {
+  display: none; }
+
+.contact-container {
+  align-content: space-around;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
+
+.contact-item {
+  margin: auto;
+  padding: 10px; }
+  .contact-item .text-focus {
+    font-family: "Roboto", sans-serif; }
+    .contact-item .text-focus-main {
+      color: #222222;
+      font-size: 2em; }
+    .contact-item .text-focus-secondary {
+      color: #6e6e6e;
+      font-size: 1.8em; }
+
+/*# sourceMappingURL=default.css.map */

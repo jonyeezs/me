@@ -1,0 +1,43 @@
+@import './typography';
+@import './variables';
+@import './grid';
+
+.section-title {
+  border-bottom: lighten($heading-dark, 50%) 1px solid;
+  color: lighten($heading-dark, 50%);
+  font-size: 1.2em;
+  font-weight: 500;
+  padding-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.hide {
+  display: none;
+}
+
+.contact-container {
+  align-content: space-around;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.contact-item {
+  margin: auto;
+  padding: 10px;
+
+  .text-focus {
+    font-family: $font-family-display;
+
+    &-main {
+      color: darken($heading-dark, 10%);
+      font-size: 2em;
+    }
+
+    &-secondary {
+      color: lighten($heading-dark, 20%);
+      font-size: 1.8em;
+    }
+  }
+
+}

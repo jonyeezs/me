@@ -1,0 +1,36 @@
+// Scaffold the grid
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  margin: 0 auto;
+  width: 60vw;
+
+  .first {
+    order: 1;
+  }
+
+  .second {
+    order: 2;
+  }
+
+  .third {
+    order: 3;
+  }
+
+  &-contact {
+    flex-grow: 1;
+  }
+
+  &-expertise {
+    flex-grow: 2;
+  }
+
+  &-achievement {
+    flex-grow: 3;
+  }
+}
+
+// End base layout
