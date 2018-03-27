@@ -52,21 +52,54 @@ body {
   display: none; }
 
 .contact-container {
-  align-content: space-around;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap; }
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, auto); }
 
 .contact-item {
-  margin: auto;
+  font-family: "Roboto", sans-serif;
   padding: 10px; }
-  .contact-item .text-focus {
-    font-family: "Roboto", sans-serif; }
-    .contact-item .text-focus-main {
+  .contact-item.contact-name {
+    grid-column: 1;
+    grid-row: 1; }
+    .contact-item.contact-name > span {
       color: #222222;
-      font-size: 2em; }
-    .contact-item .text-focus-secondary {
+      float: left;
+      font-size: 2.5em; }
+  .contact-item.contact-location {
+    grid-column: 2;
+    grid-row: 1; }
+    .contact-item.contact-location > span {
       color: #6e6e6e;
-      font-size: 1.8em; }
+      float: right;
+      font-size: 1.8em;
+      font-weight: 200; }
+  .contact-item.contact-email {
+    grid-column: 1;
+    grid-row: 2; }
+    .contact-item.contact-email span {
+      color: #3b3b3b;
+      float: left;
+      font-size: 2em;
+      font-weight: 300; }
+  .contact-item.contact-mobile {
+    grid-column: 1;
+    grid-row: 3; }
+    .contact-item.contact-mobile span {
+      color: #3b3b3b;
+      float: left;
+      font-size: 2em;
+      font-weight: 300; }
+  .contact-item.contact-media {
+    grid-column: 2;
+    grid-row: 2 / span 2; }
+    .contact-item.contact-media > ul {
+      list-style-type: none; }
+  .contact-item a {
+    color: #3b3b3b;
+    text-decoration: none; }
+
+.fa-twitter-square {
+  color: #00aced; }
 
 /*# sourceMappingURL=default.css.map */

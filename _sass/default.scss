@@ -16,28 +16,73 @@
 }
 
 .contact-container {
-  align-content: space-around;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, auto);
 }
 
 .contact-item {
-  margin: auto;
+  font-family: $font-family-display;
   padding: 10px;
 
-  .text-focus {
-    font-family: $font-family-display;
-
-    &-main {
+  // Grid layout
+  &.contact-name {
+    grid-column: 1;
+    grid-row: 1;
+    > span {
       color: darken($heading-dark, 10%);
-      font-size: 2em;
-    }
-
-    &-secondary {
-      color: lighten($heading-dark, 20%);
-      font-size: 1.8em;
+      float: left;
+      font-size: 2.5em;
     }
   }
 
+  &.contact-location {
+    grid-column: 2;
+    grid-row: 1;
+    > span {
+      color: lighten($heading-dark, 20%);
+      float: right;
+      font-size: 1.8em;
+      font-weight: 200;
+    }
+  }
+
+  &.contact-email {
+    grid-column: 1;
+    grid-row: 2;
+    span {
+      color: $heading-dark;
+      float: left;
+      font-size: 2em;
+      font-weight: 300;
+    }
+  }
+
+  &.contact-mobile {
+    grid-column: 1;
+    grid-row: 3;
+    span {
+      color: $heading-dark;
+      float: left;
+      font-size: 2em;
+      font-weight: 300;
+    }
+  }
+
+  &.contact-media {
+    grid-column: 2;
+    grid-row: 2 / span 2;
+    > ul {
+      list-style-type: none;
+    }
+  }
+
+  a {
+    color: $heading-dark;
+    text-decoration: none;
+  }
+}
+
+.fa-twitter-square {
+  color: $twitter-blue;
 }
