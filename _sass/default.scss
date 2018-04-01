@@ -12,7 +12,15 @@
 }
 
 .hide {
-  display: none;
+  // helps for screen readers.
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 .section-contact {
@@ -122,11 +130,18 @@
   }
 }
 
-.bold-strong {
-  font-size: 1.2em;
-  font-weight: 400;
+.twitter-color {
+  color: $twitter-blue;
 }
 
-.fa-twitter-square {
-  color: $twitter-blue;
+.github-color {
+  color: $github-black;
+}
+
+.linkedin-color {
+  color: $linkedin-blue;
+}
+
+.medium-color {
+  color: $medium-green;
 }
