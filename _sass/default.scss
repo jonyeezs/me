@@ -77,26 +77,23 @@
   &.contact-email {
     grid-column: 1;
     grid-row: 2;
-    padding: 0;
-    text-align: center;
-
-    span {
-      color: $heading-dark;
-      font-size: 1.7em;
-      font-weight: 300;
-    }
   }
 
   &.contact-mobile {
     grid-column: 1;
     grid-row: 3;
+  }
+
+  &.contact-email,
+  &.contact-mobile {
     padding: 0;
-    text-align: center;
+    text-align: left;
 
     span {
       color: $heading-dark;
       font-size: 1.7em;
       font-weight: 300;
+      margin-left: 20%;
     }
   }
 
