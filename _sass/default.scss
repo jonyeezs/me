@@ -12,7 +12,15 @@
 }
 
 .hide {
-  display: none;
+  // helps for screen readers.
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px
 }
 
 .section-contact {
@@ -127,6 +135,6 @@
   font-weight: 400;
 }
 
-.fa-twitter-square {
+.fa-twitter-color {
   color: $twitter-blue;
 }
