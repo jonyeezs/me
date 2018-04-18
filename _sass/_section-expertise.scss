@@ -1,0 +1,77 @@
+.section-expertise {
+  border-top: $border;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.expertise-container {
+  display: grid;
+  grid: {
+    template-columns: 1fr repeat(2, 2fr) 1fr;
+    template-rows: repeat(4, auto);
+  }
+}
+
+.expertise-role {
+  @extend %common-item-setup;
+
+  grid-column: 1 / span 4;
+  grid-row: 1;
+  > div {
+    @include main-section-span-text(2vw);
+    text-align: center;
+  }
+}
+
+.expertise-edu {
+  @extend %common-item-setup;
+
+  align-content: center;
+  display: flex;
+  flex-wrap: wrap;
+
+  grid-column: 2 / span 2;
+  grid-row: 2;
+
+  > div {
+    flex: 1 1 50%;
+  }
+
+  .edu-heading {
+    color: $dark-colour;
+    font-size: 1.3em;
+    text-align: left;
+  }
+
+  .edu-subtitle {
+    color: lighten($dark-colour, 5%);
+    font: {
+      size: 1em;
+      weight: 300;
+    }
+    text-align: right;
+  }
+
+  .edu-fade {
+    color: lighten($dark-colour, 20%);
+    float: right;
+    font-weight: 100;
+    line-height: 7px;
+    padding-right: 2px;
+    text-align-last: right;
+  }
+}
+
+.expertise-passion {
+  @extend %common-item-setup;
+
+  grid-column: 1 / span 4;
+  grid-row: 3;
+}
+
+.expertise-skills {
+  @extend %common-item-setup;
+
+  grid-column: 1 / span 4;
+  grid-row: 4;
+}
