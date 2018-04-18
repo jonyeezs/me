@@ -19,4 +19,12 @@ $font-family-display: 'Roboto', sans-serif;
   font-family: 'Roboto', sans-serif;
 }
 
-$heading-dark: #3b3b3b;
+@mixin main-section-span-text($size-reduce: 1) {
+  color: darken($dark-colour, 5%);
+  float: left;
+  font: {
+    size: $section-width / 10 - $size-reduce;
+    weight: 300;
+  }
+  width: 100%;
+}

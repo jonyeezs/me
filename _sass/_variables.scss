@@ -3,3 +3,7 @@ $github-black: #333;
 $linkedin-blue: #0077b5;
 $medium-green: #00ab6c;
 $section-width: 60vw;
+
+$dark-colour: #3b3b3b;
+
+$border: lighten($dark-colour, 50%) 1px solid;

@@ -1,0 +1,80 @@
+.section-contact {
+  margin-top: 20px;
+}
+
+.contact-container {
+  display: grid;
+  grid: {
+    template-columns: repeat(2, 1fr);
+    template-rows: repeat(3, auto);
+  }
+}
+
+// Grid layout
+.contact-name {
+  @extend %common-item-setup;
+
+  grid-column: 1 / span 2;
+  grid-row: 1;
+  padding-bottom: 30px; // This is to give space for the location to appear at the bottom.
+  > span { @include main-section-span-text() }
+}
+
+.contact-location {
+  @extend %common-item-setup;
+
+  grid-column: 2;
+  grid-row: 1;
+
+  > span {
+    color: lighten($dark-colour, 20%);
+    float: right;
+    font-weight: 100;
+  }
+
+  &.below-name {
+    // to set child's absolute to the grid cell.
+    position: relative;
+  }
+
+  > .below-name {
+    bottom: 0;
+    font-size: 20px;
+    position: absolute;
+    right: 0;
+  }
+}
+
+.contact-email {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.contact-mobile {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.contact-email,
+.contact-mobile {
+  @extend %common-item-setup;
+
+  padding: 5px 0;
+  text-align: left;
+
+  span {
+    color: $dark-colour;
+    font: {
+      size: 1.5em;
+      weight: 300;
+    }
+    margin-left: 20%;
+  }
+}
+
+.contact-media {
+  @extend %common-item-setup;
+
+  grid-column: 2;
+  grid-row: 2 / span 2;
+}

@@ -1,0 +1,67 @@
+%common-item-setup {
+  font-family: $font-family-display;
+  padding: 10px;
+}
+
+.section-title {
+  border-bottom: $border;
+  color: lighten($dark-colour, 50%);
+  font: {
+    size: 1.2em;
+    weight: 500;
+  }
+  padding-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.hide {
+  // helps for screen readers.
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.horizontal-list {
+  list-style-type: none;
+
+  li {
+    display: inline-block;
+  }
+
+  a {
+    margin: auto;
+  }
+}
+
+a {
+  color: $dark-colour;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: -webkit-link;
+    text-decoration: underline;
+    transition: color 1s ease-out;
+  }
+}
+
+.twitter-color {
+  color: $twitter-blue;
+}
+
+.github-color {
+  color: $github-black;
+}
+
+.linkedin-color {
+  color: $linkedin-blue;
+}
+
+.medium-color {
+  color: $medium-green;
+}
