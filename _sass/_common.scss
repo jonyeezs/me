@@ -1,6 +1,6 @@
 %common-item-setup {
   font-family: $font-family-display;
-  padding: 10px;
+  padding: $padded-size;
 }
 
 .section-title {
@@ -10,7 +10,6 @@
     size: 1.2em;
     weight: 500;
   }
-  padding-bottom: 5px;
   text-transform: uppercase;
 }
 
