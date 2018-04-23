@@ -16,7 +16,7 @@
 
   grid-column: 1 / span 2;
   grid-row: 1;
-  > span { @include main-section-span-text() }
+  > span { @include main-section-heading-text() }
 }
 
 .contact-location {

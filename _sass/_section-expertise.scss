@@ -19,7 +19,7 @@
   grid-row: 1;
 
   > div {
-    @include main-section-span-text(2vw);
+    @include main-section-heading-text(2vw);
     text-align: center;
   }
 }
