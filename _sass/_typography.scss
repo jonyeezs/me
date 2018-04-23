@@ -23,7 +23,7 @@ $font-family-display: 'Roboto', sans-serif;
   @return $section-width / 10 - $size-reduce
 }
 
-@mixin main-section-span-text($size-reduce: 1) {
+@mixin main-section-heading-text($size-reduce: 1) {
   color: darken($dark-colour, 5%);
   float: left;
   font: {
