@@ -1,7 +1,7 @@
 .section-expertise {
   border-top: $border;
-  margin-top: 20px;
-  padding-top: 20px;
+  margin-top: $padded-size;
+  padding-top: $padded-size;
 }
 
 .expertise-container {
@@ -17,6 +17,7 @@
 
   grid-column: 1 / span 4;
   grid-row: 1;
+
   > div {
     @include main-section-span-text(2vw);
     text-align: center;
@@ -66,6 +67,30 @@
 
   grid-column: 1 / span 4;
   grid-row: 3;
+
+  .inline-pill-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 0 $padded-size;
+
+    > .pill {
+      background: $highlight-blue;
+      border: rgba($dark-colour, .06) 2px solid;
+      border-radius: 20px;
+      color: $white;
+
+      font: {
+        size: font-size-reduce(2vw) / 4;
+        weight: 400;
+      }
+
+      letter-spacing: .3em;
+      padding: $padded-size - .5%;
+      text-transform: uppercase;
+    }
+  }
 }
 
 .expertise-skills {

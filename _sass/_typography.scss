@@ -19,11 +19,15 @@ $font-family-display: 'Roboto', sans-serif;
   font-family: 'Roboto', sans-serif;
 }
 
+@function font-size-reduce($size-reduce: 1) {
+  @return $section-width / 10 - $size-reduce
+}
+
 @mixin main-section-span-text($size-reduce: 1) {
   color: darken($dark-colour, 5%);
   float: left;
   font: {
-    size: $section-width / 10 - $size-reduce;
+    size: font-size-reduce($size-reduce);
     weight: 300;
   }
   width: 100%;
