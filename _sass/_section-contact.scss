@@ -16,7 +16,7 @@
 
   grid-column: 1 / span 2;
   grid-row: 1;
-  > span { @include main-section-heading-text() }
+  > span { @include main-section-heading-text(); }
 }
 
 .contact-location {
@@ -77,4 +77,11 @@
 
   grid-column: 2;
   grid-row: 2 / span 2;
+
+  .social-list {
+
+    > li {
+      padding: 0 $padded-size;
+    }
+  }
 }
