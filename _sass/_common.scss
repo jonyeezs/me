@@ -25,6 +25,20 @@
   width: 1px;
 }
 
+.relativize {
+  position: relative;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.tooltip {
+  font-size: .83em;
+  margin-left: 3px;
+  vertical-align: super;
+}
+
 .horizontal-list {
   list-style-type: none;
   padding-left: 0;
@@ -64,4 +78,8 @@ a {
 
 .medium-color {
   color: $medium-green;
+}
+
+.k8s-color {
+  color: $k8s-blue;
 }

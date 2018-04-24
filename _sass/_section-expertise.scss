@@ -98,4 +98,75 @@
 
   grid-column: 1 / span 4;
   grid-row: 4;
+
+  .open-table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    width: 80%;
+    tbody {
+      border-top: lighten($dark-colour, 70%) 1px groove;
+    }
+  }
+
+  .table-heading {
+    font-size: font-size-reduce(2vw) / 3;
+  }
+
+  .shrink {
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  td {
+    font-size: font-size-reduce(3.3vw);
+    vertical-align: baseline;
+
+    > [title='Kubernetes'] {
+      font-size: .4em;
+    }
+
+    > [title='SQL'] {
+      font-size: .6em;
+    }
+
+    > [title='Nginx'] {
+      font-size: 1.4em;
+    }
+
+    > [title="AngularJS"] {
+      font-size: 2em;
+    }
+  }
+  $relative-bottoms: (
+    1: 1em,
+    2: 2em,
+    7: .7em,
+    4: 4em,
+    n6: -.6em,
+    23: 2.3em
+  );
+
+  @each $key, $value in $relative-bottoms {
+    .mv-up-#{$key} {
+      bottom: #{$value};
+    }
+  }
+
+  // This requires element to be in a relative position (.relativize)
+  @function scale-percentage($percentage) {
+    @if $percentage == 0 { @return 0; }
+    @return calc(#{$percentage} - 1em);
+  }
+
+  $scales: (
+  minimally: 40%,
+  adequate: 60%,
+  promotable: 90%
+  );
+
+  @each $scale, $percent in $scales {
+    [data-scale='#{$scale}'] {
+      left: scale-percentage($percent);
+    }
+  }
 }
