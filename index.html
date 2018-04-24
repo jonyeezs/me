@@ -9,6 +9,7 @@
     <script defer src="https://pro.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-jTxqWCb7UqRDQDd2Nkuh5BkHe9k+ElbFLa3NaJfid5kBK/+cVktzVRXrw0isFWxf" crossorigin="anonymous"></script>
     <script defer src="https://pro.fontawesome.com/releases/v5.0.8/js/brands.js" integrity="sha384-gJijC/2qM/p3zm2wHECHX1OMLdzlu61sNp7YfmFQxo+OyT9hO1orX7MmnHhaoXQ4" crossorigin="anonymous"></script>
     <script defer src="https://pro.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-Ht3fAeBiX/rVmKVyMwONAIIt0aRoPzZgq1FzdRgR9zFo+Kcd8YDwUbFlTItfaYW4" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
     <link rel="stylesheet" type="text/css" href="assets/stylesheets/default.css">
 </head>
 
@@ -86,37 +87,85 @@
                 </ul>
             </div>
             <div class="expertise-skills" aria-label="Language Proficiency">
-                <table>
+                <table class="open-table">
                     <thead>
-                        <tr>
-                            <th title="Understand fundamentals, concepts and principles and have moved beyond 'getting started' guides">Basics</th>
-                            <th title="Can be relied to complete tasks, with minimum assistance, such as maintaining code or commencing new work on a professional level">Capable</th>
-                            <th title="Able to participate in discussions on a seniority level and provide relevant ideas and coach">Knowledgable</th>
-                            <th title="Provide guidance, foster greater understanding, and be counted on as the point person">Expert</th>
+                        <tr class="table-heading">
+                            <th class="padding-bottom" title="Understand fundamentals, concepts and principles and have moved beyond 'getting started' guides">Basics<i class="far fa-info-circle tooltip"></i></th>
+                            <th class="padding-bottom" title="Can be relied to complete tasks, with minimum assistance, such as maintaining code or commencing new work on a professional level">Capable<i class="far fa-info-circle tooltip"></i></th>
+                            <th class="padding-bottom shrink" title="Able to participate in discussions on a seniority level and provide relevant ideas and coach">Knowledgeable<i class="far fa-info-circle tooltip"></i></th>
+                            <th class="padding-bottom" title="Provide guidance, foster greater understanding, and be counted on as the point person">Expert<i class="far fa-info-circle tooltip"></i></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>
-                                <div>Ruby</div>
-                                <div>Nginx</div>
-                                <div>Kubernetes</div>
+                            <td class="padding-top padding-left">
+                                <div title="Ruby">
+                                    <i class="devicon-ruby-plain colored relativize"
+                                        data-scale="promotable">
+                                        <span class="hide">Ruby</span></i>
+                                </div>
+                                <div title="Nginx">
+                                    <i class="devicon-nginx-original colored relativize mv-up-1"
+                                        data-scale="minimally">
+                                        <span class="hide">Nginx</span></i>
+                                </div>
+                                <div title="Kubernetes">
+                                    <span class="k8s-color relativize mv-up-2"
+                                        data-scale="adequate">Kubernetes</span>
+                                </div>
                             </td>
-                            <td>
-                                <div>Docker</div>
-                                <div>SASS</div>
-                                <div>SQL</div>
+                            <td class="padding-top">
+                                <div title="Docker">
+                                    <i class="devicon-docker-plain colored relativize"
+                                        data-scale="adequate">
+                                        <span class="hide">Docker</span></i>
+                                </div>
+                                <div title="SASS">
+                                    <i class="devicon-sass-original colored relativize"
+                                        data-scale="minimally">
+                                        <span class="hide">SASS</span></i>
+                                </div>
+                                <div title="SQL">
+                                    <span class="relative"
+                                        data-scale="adequate">SQL</span>
+                                </div>
                             </td>
-                            <td>
-                                <div>CSS</div>
-                                <div>C#</div>
-                                <div>TypeScript</div>
+                            <td class="padding-top">
+                                <div title="CSS">
+                                    <i class="devicon-css3-plain relativize"
+                                        data-scale="adequate">
+                                        <span class="hide">CSS</span></i>
+                                </div>
+                                <div title="C#">
+                                    <i class="devicon-csharp-plain colored relativize"
+                                        data-scale="minimally">
+                                        <span class="hide">C#</span></i>
+                                </div>
+                                <div title="TypeScript">
+                                    <i class="devicon-typescript-plain colored relativize"
+                                        data-scale="adequate">
+                                        <span class="hide">TypeScript</span></i>
+                                </div>
                             </td>
-                            <td>
-                                <div>HTML5</div>
-                                <div>AngularJS</div>
-                                <div>Angular</div>
-                                <div>Javascript</div>
+                            <td class="padding-top padding-right">
+                                <div title="HTML5">
+                                    <i class="devicon-html5-plain-wordmark colored relativize"
+                                        data-scale="adequate">
+                                        <span class="hide">HTML5</span></i>
+                                </div>
+                                <div title="AngularJS">
+                                    <i class="devicon-angularjs-plain-wordmark colored relativize mv-up-n6"
+                                        data-scale="promotable"><span class="hide">AngularJS</span></i>
+                                </div>
+                                <div title="Angular">
+                                    <i class="devicon-angularjs-plain colored relativize mv-up-2"
+                                        data-scale="adequate"><span class="hide">Angular</span></i>
+                                </div>
+                                <div title="Javascript">
+                                    <i class="devicon-javascript-plain colored relativize mv-up-4"
+                                        data-scale="promotable">
+                                        <span class="hide">Javascript</span></i>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
