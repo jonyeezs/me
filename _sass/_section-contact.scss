@@ -16,6 +16,7 @@
 
   grid-column: 1 / span 2;
   grid-row: 1;
+
   > span {
     @include main-section-heading-text();
     font-size: 4.95vw; // FIXME: for some odd reason the size differs from my local

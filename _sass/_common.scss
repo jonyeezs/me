@@ -63,7 +63,8 @@
   }
 }
 
-a {
+a,
+.hrefable {
   color: $dark-colour;
   text-decoration: none;
 
