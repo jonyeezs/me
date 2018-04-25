@@ -5,10 +5,10 @@
 
 @mixin svg-icon($svgpath) {
   background: {
-      image: url(#{$svgpath});
-      position: left;
-      repeat: no-repeat;
-      size: contain;
+    image: url(#{$svgpath});
+    position: left;
+    repeat: no-repeat;
+    size: contain;
   }
   display: inline-block;
   text-indent: -9999px;
@@ -45,7 +45,7 @@
 }
 
 .tooltip {
-  font-size: .83em;
+  font-size: .6em;
   margin-left: 3px;
   vertical-align: super;
 }
