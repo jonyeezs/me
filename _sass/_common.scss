@@ -3,6 +3,17 @@
   padding: $padded-size;
 }
 
+@mixin svg-icon($svgpath) {
+  background: {
+      image: url(#{$svgpath});
+      position: left;
+      repeat: no-repeat;
+      size: contain;
+  }
+  display: inline-block;
+  text-indent: -9999px;
+}
+
 .section-title {
   border-bottom: $border;
   color: lighten($dark-colour, 50%);
@@ -78,8 +89,4 @@ a {
 
 .medium-color {
   color: $medium-green;
-}
-
-.k8s-color {
-  color: $k8s-blue;
 }
