@@ -110,7 +110,7 @@
     color: lighten($dark-colour, 4%);
     font-size: font-size-reduce(4.3vw);
     font-weight: 400;
-    padding-left: 4px;
+    padding-left: $padded-size;
     text-align: left;
   }
 
