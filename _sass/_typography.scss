@@ -32,3 +32,19 @@ $font-family-display: 'Roboto', sans-serif;
   }
   width: 100%;
 }
+
+@mixin secondary-information() {
+  color: lighten($dark-colour, 10%);
+  font: {
+    size: 1em;
+    weight: 300;
+  }
+}
+
+@mixin lesser-information() {
+  color: lighten($dark-colour, 15%);
+  font: {
+    size: .95em;
+    weight: 300;
+  }
+}

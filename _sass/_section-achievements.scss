@@ -1,0 +1,98 @@
+@mixin timeline-info($position) {
+  width: 50%;
+  float: $position;
+  position: absolute;
+  top: $padded-size + 1%;
+  $move: 'left' !default;
+  @if $position == 'left' {
+    $move: 'right';
+  }
+  text-align: #{$move};
+  #{$move}: 100% + ($padded-size * 3);
+}
+
+@mixin timeline-marker($position) {
+  background-color: $highlight-blue;
+  border-radius: 50%;
+  bottom: 0;
+  content: ' ';
+  height: 18px;
+  $calc: if($position == right, 10px, 7px);
+  #{$position}: calc(100% - #{$calc});
+  position: absolute;
+  top: 4%;
+  width: 18px;
+}
+
+.section-achievement {
+  .section-title {
+    margin-top: $padded-size;
+    padding-top: $padded-size;
+  }
+}
+
+.timeline {
+  position: relative;
+  width: 100%;
+
+  &::before {
+    background-color: $highlight-blue;
+    bottom: 0;
+    content: '';
+    left: 50%;
+    position: absolute;
+    top: $padded-size;
+    width: 2px;
+  }
+}
+
+.timeline-item {
+  clear: both;
+  padding: $padded-size;
+  position: relative;
+  width: 50% - ($padded-size * 2);
+
+  &:nth-child(odd) {
+    .job-info {
+      @include timeline-info(right);
+    }
+
+    &::after {
+      @include timeline-marker(left);
+    }
+  }
+
+  &:nth-child(even) {
+    float: right;
+
+    .job-info {
+      @include timeline-info(left);
+    }
+
+    &::after {
+      @include timeline-marker(right);
+    }
+  }
+}
+
+.job-info {
+  * {
+    color: $dark-colour;
+    margin: 5px 0;
+  }
+
+  .highlight {
+    &-main {
+      color: darken($highlight-blue, 30%);
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    &-secondary {
+      @include secondary-information
+    }
+
+    &-lower {
+      @include lesser-information
+    }
+  }
+}

@@ -45,11 +45,7 @@
 
   .edu-subtitle {
     align-self: flex-end;
-    color: lighten($dark-colour, 10%);
-    font: {
-      size: 1em;
-      weight: 300;
-    }
+    @include secondary-information;
     text-align: right;
   }
 
