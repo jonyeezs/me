@@ -33,16 +33,16 @@ $font-family-display: 'Roboto', sans-serif;
   width: 100%;
 }
 
-@mixin secondary-information() {
-  color: lighten($dark-colour, 10%);
+@mixin main-information() {
+  color: $dark-colour;
   font: {
     size: 1em;
-    weight: 300;
+    weight: 500;
   }
 }
 
-@mixin lesser-information() {
-  color: lighten($dark-colour, 15%);
+@mixin secondary-information() {
+  color: lighten($dark-colour, 10%);
   font: {
     size: .95em;
     weight: 300;

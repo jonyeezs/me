@@ -1,16 +1,3 @@
-@mixin timeline-info($position) {
-  width: 50%;
-  float: $position;
-  position: absolute;
-  top: $padded-size + 1%;
-  $move: 'left' !default;
-  @if $position == 'left' {
-    $move: 'right';
-  }
-  text-align: #{$move};
-  #{$move}: 100% + ($padded-size * 3);
-}
-
 @mixin timeline-marker($position) {
   background-color: $highlight-blue;
   border-radius: 50%;
@@ -46,6 +33,47 @@
   }
 }
 
+@mixin timeline-info($position) {
+  $opposite: 'left' !default;
+  $bottom-area: 'left bright' !default;
+  @if $position == 'left' {
+    $opposite: 'right';
+    $bottom-area: 'bleft right';
+  }
+
+  .job-info {
+    display: inline-grid;
+    grid-gap: 2% 0;
+    grid-template: {
+      areas: 'left right'
+            '#{$bottom-area}';
+      columns: auto;
+      rows: 1fr 1fr;
+    }
+    width: 100%;
+    .highlight {
+      &-main {
+        grid-area: #{$opposite};
+        margin-top: 0;
+        text-align: #{$opposite};
+      }
+
+      &-secondary {
+        grid-area: #{$position};
+        justify-self: stretch;
+        margin: 0;
+        text-align: #{$position};
+      }
+
+      &-lower {
+        grid-area: b#{$position};
+        text-align: #{$position};
+      }
+    }
+
+  }
+}
+
 .timeline-item {
   clear: both;
   padding: $padded-size;
@@ -53,9 +81,7 @@
   width: 50% - ($padded-size * 2);
 
   &:nth-child(odd) {
-    .job-info {
-      @include timeline-info(right);
-    }
+    @include timeline-info(left);
 
     &::after {
       @include timeline-marker(left);
@@ -65,9 +91,7 @@
   &:nth-child(even) {
     float: right;
 
-    .job-info {
-      @include timeline-info(left);
-    }
+    @include timeline-info(right);
 
     &::after {
       @include timeline-marker(right);
@@ -78,21 +102,49 @@
 .job-info {
   * {
     color: $dark-colour;
-    margin: 5px 0;
+  }
+}
+
+.highlight {
+  &-main {
+    color: darken($highlight-blue, 30%);
+    font-size: 1em;
+    font-weight: 500;
+  }
+  &-secondary {
+    @include main-information;
+    color: darken($dark-colour, 5%);
   }
 
-  .highlight {
-    &-main {
-      color: darken($highlight-blue, 30%);
-      font-weight: 500;
-      margin-bottom: 8px;
-    }
-    &-secondary {
-      @include secondary-information
-    }
-
-    &-lower {
-      @include lesser-information
-    }
+  &-lower {
+    @include secondary-information
   }
+
+  &-emphasis {
+    @include main-information;
+    color: darken($dark-colour, 60%);
+    font-size: 1.2em;
+  }
+}
+
+.list-achievement {
+  &:not(:first-child) {
+    margin-top: 30px;
+  }
+}
+
+.no-horizontal-margin {
+  margin: 0 auto;
+}
+
+.indent {
+  margin-left: 1em;
+}
+
+.read-text {
+  font-family: $font-family-text;
+  letter-spacing: .3px;
+  line-height: 20px;
+  padding: 0 8px;
+  text-align: justify;
 }

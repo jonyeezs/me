@@ -50,10 +50,12 @@
   vertical-align: super;
 }
 
-.horizontal-list {
+.unlist {
   list-style-type: none;
   padding-left: 0;
+}
 
+.horizontal-list {
   li {
     display: inline-block;
   }
