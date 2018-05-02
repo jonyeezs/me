@@ -122,8 +122,7 @@
 
   &-emphasis {
     @include main-information;
-    color: darken($dark-colour, 60%);
-    font-size: 1.2em;
+    font-size: 1.09em;
   }
 }
 
