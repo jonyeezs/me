@@ -36,15 +36,21 @@ $font-family-display: 'Roboto', sans-serif;
 @mixin main-information() {
   color: $dark-colour;
   font: {
-    size: 1em;
-    weight: 500;
+    size: 1.3em;
+    weight: 400;
   }
 }
 
 @mixin secondary-information() {
-  color: lighten($dark-colour, 10%);
+  color: lighten($dark-colour, 15%);
   font: {
-    size: .95em;
+    size: 1.3em;
     weight: 300;
   }
+}
+
+@mixin section-emphasis() {
+  color: lighten($dark-colour, 4%);
+  font-size: font-size-reduce(4.3vw);
+  font-weight: 400;
 }

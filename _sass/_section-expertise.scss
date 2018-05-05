@@ -38,14 +38,13 @@
   }
 
   .edu-heading {
-    color: $dark-colour;
-    font-size: 1.3em;
+    @include main-information;
     text-align: left;
   }
 
   .edu-subtitle {
-    align-self: flex-end;
     @include secondary-information;
+    align-self: flex-end;
     text-align: right;
   }
 
@@ -82,7 +81,7 @@
         weight: 400;
       }
 
-      letter-spacing: .3em;
+      letter-spacing: .12em;
       padding: $padded-size - .5%;
       text-transform: uppercase;
     }
@@ -102,10 +101,8 @@
   }
 
   .table-heading {
+    @include section-emphasis;
     border-left: lighten($dark-colour, 60%) 2px solid;
-    color: lighten($dark-colour, 4%);
-    font-size: font-size-reduce(4.3vw);
-    font-weight: 400;
     padding-left: $padded-size;
     text-align: left;
   }
