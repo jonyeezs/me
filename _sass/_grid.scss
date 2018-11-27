@@ -8,6 +8,11 @@ body {
   margin: 0 auto;
   width: $section-width;
 
+  @media print {
+    margin: 0 96px;
+    width: auto;
+  }
+
   .first {
     order: 1;
   }

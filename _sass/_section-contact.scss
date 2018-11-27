@@ -20,6 +20,10 @@
   > span {
     @include main-section-heading-text();
     font-size: 4.95vw; // FIXME: for some odd reason the size differs from my local
+
+    @media print {
+      font-size: 6vw;
+    }
   }
 }
 
@@ -73,6 +77,10 @@
       weight: 300;
     }
     margin-left: 20%;
+
+    @media print {
+      font-size: 16pt;
+    }
   }
 }
 
@@ -82,8 +90,28 @@
   grid-column: 2;
   grid-row: 2 / span 2;
 
-  .social-list {
+  @media print {
+    position: relative;
+  }
+  .resume-link {
+    display: none;
+    @media print {
+      bottom: 0;
+      color: $dark-colour;
+      display: inline;
+      font: {
+        size: 13pt;
+        weight: 300;
+      }
+      padding: 5px 0;
+      position: absolute;
+    }
+  }
 
+  .social-list {
+  @media print {
+    display: none;
+  }
     > li {
       padding: 0 $padded-size;
     }

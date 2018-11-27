@@ -1,3 +1,9 @@
+// calculation for section-skills width when print media
+$skill-print-left-m: 2%;
+$skill-print-table: 60%;
+$skill-print-glossary: 33%;
+$skill-print-glossary-left-p: 5%;
+
 .section-expertise {
   border-top: $border;
   margin-top: $padded-size;
@@ -46,6 +52,10 @@
     @include secondary-information;
     align-self: flex-end;
     text-align: right;
+
+    @media print {
+      font-size: 12pt;
+    }
   }
 
   .edu-fade {
@@ -81,6 +91,10 @@
         weight: 400;
       }
 
+      @media print {
+        font-size: font-size-reduce(2vw) / 2.5;
+      }
+
       letter-spacing: .12em;
       padding: $padded-size - .5%;
       text-transform: uppercase;
@@ -98,6 +112,13 @@
     border-collapse: collapse;
     margin: 0 auto;
     width: 80%;
+
+    @media print {
+      display: inline-block;
+      float: left;
+      margin-left: $skill-print-left-m;
+      width: $skill-print-table;
+    }
   }
 
   .table-heading {
@@ -105,6 +126,12 @@
     border-left: lighten($dark-colour, 60%) 2px solid;
     padding-left: $padded-size;
     text-align: left;
+
+    @media print {
+      > i {
+        display: none;
+      }
+    }
   }
 
   .padding {
@@ -158,12 +185,12 @@
   $proficiency-levels: basics capable knowledgeable expert;
 
   @each $level in $proficiency-levels {
-     th[aria-label=#{$level}]:not(:hover) {
+    th[aria-label=#{$level}]:not(:hover) {
        ~ dt[aria-label=#{$level}]
        ~ dd[aria-label=#{$level}] {
          @include visual-hide;
        }
-     }
+    }
    }
 }
 
@@ -176,5 +203,31 @@
   .glossary-definition {
     @include section-emphasis;
     font-weight: 200;
+  }
+}
+
+@media print {
+  .expertise-glossary {
+    display: inline-block;
+    font-style: italic;
+    padding-left: $skill-print-glossary-left-p;
+    width: $skill-print-glossary;
+
+    .glossary-heading {
+      margin-bottom: 4px;
+      padding-left: 20upx;
+    }
+
+    .glossary-list {
+      margin-top: 4px;
+    }
+
+    .glossary-term {
+      font-size: font-size-reduce(4.8vw);
+    }
+
+    .glossary-definition {
+      font-size: font-size-reduce(5vw);
+    }
   }
 }

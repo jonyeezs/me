@@ -1,3 +1,5 @@
+$timeline-view: 'screen and (min-width: 768px)';
+
 @mixin timeline-marker($position) {
   background-color: $highlight-blue;
   border-radius: 50%;
@@ -9,27 +11,6 @@
   position: absolute;
   top: 4%;
   width: 18px;
-}
-
-.section-achievement {
-  border-top: $border;
-  margin-top: $padded-size;
-  padding-top: $padded-size;
-}
-
-.timeline {
-  position: relative;
-  width: 100%;
-
-  &::before {
-    background-color: $highlight-blue;
-    bottom: 0;
-    content: '';
-    left: 50%;
-    position: absolute;
-    top: $padded-size;
-    width: 2px;
-  }
 }
 
 @mixin timeline-info($position) {
@@ -50,6 +31,7 @@
       rows: 1fr 1fr;
     }
     width: 100%;
+
     .highlight {
       &-main {
         grid-area: #{$opposite};
@@ -69,32 +51,103 @@
         text-align: #{$position};
       }
     }
-
   }
+}
+
+.section-achievement {
+  border-top: $border;
+  margin-top: $padded-size;
+  padding-top: $padded-size;
+}
+
+.timeline {
+  position: relative;
+  width: 100%;
 }
 
 .timeline-item {
   @extend %common-item-setup;
-  clear: both;
-  position: relative;
-  width: 50% - ($padded-size * 2);
+}
 
-  &:nth-child(odd) {
-    @include timeline-info(left);
+@media #{$timeline-view} {
+  .timeline::before {
+    background-color: $highlight-blue;
+    bottom: 0;
+    content: '';
+    left: 50%;
+    position: absolute;
+    top: $padded-size;
+    width: 2px;
+  }
 
-    &::after {
-      @include timeline-marker(left);
+  .timeline-item {
+    clear: both;
+    position: relative;
+    width: 50% - ($padded-size * 2);
+
+    &:nth-child(odd) {
+      @include timeline-info(left);
+
+      &::after {
+        @include timeline-marker(left);
+      }
+    }
+
+    &:nth-child(even) {
+      @include timeline-info(right);
+
+      float: right;
+
+      &::after {
+        @include timeline-marker(right);
+      }
     }
   }
 
-  &:nth-child(even) {
-    float: right;
-
-    @include timeline-info(right);
-
-    &::after {
-      @include timeline-marker(right);
+  .list-achievement {
+    &:not(:first-child) {
+      margin-top: 30px;
     }
+  }
+}
+
+@media print {
+  .timeline-item {
+    &::before {
+      background-color: $highlight-blue;
+      bottom: 0;
+      content: '';
+      left: 0;
+      position: absolute;
+      top: $padded-size;
+      width: 2px;
+    }
+  }
+
+  .job-info {
+    background-color: $white;
+    margin-top: 0;
+    position: relative;
+    right: 30px;
+    z-index: 99999;
+  }
+
+  .highlight-main {
+    display: inline;
+  }
+
+  .highlight-secondary {
+    display: inline;
+    margin-left: 10px;
+  }
+
+  .highlight-lower {
+    display: inline;
+    float: right;
+  }
+
+  .list-achievement {
+    page-break-before: auto;
   }
 }
 
@@ -109,24 +162,31 @@
     color: darken($highlight-blue, 30%);
     font-size: 1.5em;
     font-weight: 500;
+
+    @media print {
+      font-size: 14pt;
+    }
   }
+
   &-secondary {
     @include main-information;
     color: darken($dark-colour, 5%);
+
+    @media print {
+      font-size: 16pt;
+    }
   }
 
   &-lower {
-    @include secondary-information
+    @include secondary-information;
+
+    @media print {
+      font-size: 10pt;
+    }
   }
 
   &-emphasis {
     @include section-emphasis;
-  }
-}
-
-.list-achievement {
-  &:not(:first-child) {
-    margin-top: 30px;
   }
 }
 
