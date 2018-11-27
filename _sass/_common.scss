@@ -24,7 +24,7 @@
   text-transform: uppercase;
 }
 
-.hide {
+@mixin visual-hide {
   // helps for screen readers.
   border: 0;
   clip: rect(0 0 0 0);
@@ -34,6 +34,10 @@
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+.hide {
+  @include visual-hide;
 }
 
 .relativize {

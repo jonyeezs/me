@@ -150,4 +150,31 @@
     line-height: normal;
     vertical-align: text-bottom;
   }
+
+  .glossary-term {
+    @include section-emphasis;
+  }
+
+  $proficiency-levels: basics capable knowledgeable expert;
+
+  @each $level in $proficiency-levels {
+     th[aria-label=#{$level}]:not(:hover) {
+       ~ dt[aria-label=#{$level}]
+       ~ dd[aria-label=#{$level}] {
+         @include visual-hide;
+       }
+     }
+   }
+}
+
+.expertise-glossary {
+  .glossary-heading {
+    font-size: font-size-reduce(4.5vw);
+    font-weight: 200;
+  }
+
+  .glossary-definition {
+    @include section-emphasis;
+    font-weight: 200;
+  }
 }
