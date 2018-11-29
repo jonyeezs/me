@@ -79,7 +79,7 @@
     margin-left: 20%;
 
     @media print {
-      font-size: 16pt;
+      font-size: $print-subtitle;
     }
   }
 }
@@ -93,14 +93,16 @@
   @media print {
     position: relative;
   }
+
   .resume-link {
     display: none;
+
     @media print {
       bottom: 0;
       color: $dark-colour;
       display: inline;
       font: {
-        size: 13pt;
+        size: $print-subtitle;
         weight: 300;
       }
       padding: 5px 0;
@@ -109,9 +111,10 @@
   }
 
   .social-list {
-  @media print {
-    display: none;
-  }
+    @media print {
+      display: none;
+    }
+
     > li {
       padding: 0 $padded-size;
     }

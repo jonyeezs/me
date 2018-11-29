@@ -173,7 +173,7 @@ $timeline-view: 'screen and (min-width: 768px)';
     color: darken($dark-colour, 5%);
 
     @media print {
-      font-size: 16pt;
+      font-size: 14pt;
     }
   }
 
@@ -187,6 +187,10 @@ $timeline-view: 'screen and (min-width: 768px)';
 
   &-emphasis {
     @include section-emphasis;
+
+    @media print {
+      font-size: 16pt;
+    }
   }
 }
 
@@ -206,4 +210,8 @@ $timeline-view: 'screen and (min-width: 768px)';
   line-height: 1.5em;
   padding: 0 8px;
   text-align: left;
+
+  @media print {
+    font-size: 11pt;
+  }
 }
