@@ -1,7 +1,5 @@
 // calculation for section-skills width when print media
 $skill-print-left-m: 2%;
-$skill-print-table: 73%;
-$skill-print-glossary: 35%;
 $skill-print-glossary-left-p: 5%;
 
 .section-expertise {
@@ -38,6 +36,10 @@ $skill-print-glossary-left-p: 5%;
   flex-wrap: wrap;
   grid-column: 2 / span 2;
   grid-row: 2;
+
+  @media print {
+    grid-row: 4;
+  }
 
   > div {
     flex: 1 1 50%;
@@ -87,6 +89,10 @@ $skill-print-glossary-left-p: 5%;
   grid-column: 1 / span 4;
   grid-row: 3;
 
+  @media print {
+    grid-row: 2;
+  }
+
   .inline-pill-list {
     display: flex;
     flex-direction: row;
@@ -122,16 +128,23 @@ $skill-print-glossary-left-p: 5%;
   grid-column: 1 / span 4;
   grid-row: 4;
 
+  @media print {
+    display: grid;
+    grid: {
+      template-columns: repeat(4, 1fr);
+      template-rows: repeat(4, auto);
+    }
+    grid-row: 3;
+  }
+
   .open-table {
     border-collapse: collapse;
     margin: 0 auto;
     width: 80%;
 
     @media print {
-      display: inline-block;
-      float: left;
+      grid-column: 1 / span 3;
       margin-left: $skill-print-left-m;
-      width: $skill-print-table;
     }
   }
 
@@ -235,16 +248,13 @@ $skill-print-glossary-left-p: 5%;
 
 @media print {
   .expertise-glossary {
-    display: inline-block;
     font-style: italic;
+    grid-column: 4;
     padding-left: $skill-print-glossary-left-p;
-    position: absolute;
-    right: 0;
-    width: $skill-print-glossary;
 
     .glossary-heading {
-      color: lighten($dark-colour, 20%);
-      font-size: 9pt;
+      color: lighten($dark-colour, 30%);
+      font-size: 8pt;
       margin-bottom: 4px;
       padding-left: 20px;
     }
@@ -254,12 +264,16 @@ $skill-print-glossary-left-p: 5%;
     }
 
     .glossary-term {
-      font-size: 8pt;
-      margin: 6px 0 2px;
+      color: lighten($dark-colour, 25%);
+      font-size: 7pt;
+      margin: 4px 0 2px;
     }
 
     .glossary-definition {
+      color: lighten($dark-colour, 30%);
       font-size: 6pt;
+      margin-left: 2px;
+      text-align: justify;
     }
   }
 }
