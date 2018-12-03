@@ -108,11 +108,23 @@ $timeline-view: 'screen and (min-width: 768px)';
     &:not(:first-child) {
       margin-top: 30px;
     }
+
+    .read-text {
+      page-break: {
+        after: avoid;
+        before: avoid;
+        inside: avoid;
+      }
+    }
   }
 }
 
 @media print {
   .timeline-item {
+    page-break: {
+      after: avoid;
+      before: auto;
+    }
     &::before {
       background-color: $highlight-blue;
       bottom: 0;
@@ -144,10 +156,6 @@ $timeline-view: 'screen and (min-width: 768px)';
   .highlight-lower {
     display: inline;
     float: right;
-  }
-
-  .list-achievement {
-    page-break-before: auto;
   }
 }
 

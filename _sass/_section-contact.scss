@@ -6,7 +6,7 @@
   display: grid;
   grid: {
     template-columns: repeat(2, 1fr);
-    template-rows: repeat(3, auto);
+    template-rows: auto;
   }
 }
 
@@ -128,5 +128,24 @@
         right: 5px;
       }
     }
+  }
+}
+
+@media print {
+  .contact-about {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+  }
+
+  .contact-email {
+    grid-row: 3;
+  }
+
+  .contact-mobile {
+    grid-row: 4;
+  }
+
+  .contact-media {
+    grid-row: 3 / span 2;
   }
 }

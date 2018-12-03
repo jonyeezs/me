@@ -40,6 +40,13 @@
   @include visual-hide;
 }
 
+
+@media screen {
+  .curriculum-vitae {
+    display: none;
+  }
+}
+
 .relativize {
   position: relative;
 }
@@ -96,4 +103,25 @@ a,
 
 .medium-color {
   color: $medium-green;
+}
+
+
+@media print {
+  .curriculum-vitae
+  {
+    margin: $padded-size;
+
+    .read-text {
+      font-family: "Roboto",sans-serif;
+      font-weight: 300;
+    }
+  }
+}
+
+.print-break {
+  page-break-before: always;
+
+  @media #{$screen} {
+    display: none;
+  }
 }
