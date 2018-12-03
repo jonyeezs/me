@@ -91,32 +91,42 @@
   grid-row: 2 / span 2;
 
   @media print {
-    position: relative;
-  }
-
-  .resume-link {
-    display: none;
-
-    @media print {
-      bottom: 0;
-      color: $dark-colour;
-      display: inline;
-      font: {
-        size: $print-subtitle;
-        weight: 300;
-      }
-      padding: 5px 0;
-      position: absolute;
-    }
+    padding: 5px 0;
   }
 
   .social-list {
-    @media print {
-      display: none;
-    }
-
     > li {
       padding: 0 $padded-size;
+
+      @media print {
+        &:nth-child(2) {
+          display: block;
+        }
+      }
+    }
+
+    @media print {
+      margin: 0;
+
+      .linkedin-item {
+        display: none;
+      }
+
+      .social-item {
+        position: relative;
+      }
+    }
+
+    .media-label {
+      @media #{$screen} {
+        @include visual-hide;
+      }
+
+      @media print {
+        bottom: 5px;
+        position: relative;
+        right: 5px;
+      }
     }
   }
 }
