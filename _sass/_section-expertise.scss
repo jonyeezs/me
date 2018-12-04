@@ -122,6 +122,25 @@ $skill-print-glossary-left-p: 5%;
   }
 }
 
+.passion-explain {
+  text-align: justify;
+  @media print {
+    .pill-desc {
+      &:not(:first-child) {
+        padding-left: 5px;
+      }
+
+      &:nth-child(even) {
+        color: darken($highlight-blue, 10%);
+      }
+
+      &:nth-child(odd) {
+        color: $highlight-blue;
+      }
+    }
+  }
+}
+
 .expertise-skills {
   @extend %common-item-setup;
 
