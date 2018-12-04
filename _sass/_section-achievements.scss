@@ -197,9 +197,14 @@ $timeline-view: 'screen and (min-width: 768px)';
     @include section-emphasis;
 
     @media print {
-      font-size: 16pt;
+      font-size: 12pt;
     }
   }
+}
+
+.job-summary {
+  color: lighten($dark-colour, 6%);
+  font-weight: 300;
 }
 
 .no-horizontal-margin {
