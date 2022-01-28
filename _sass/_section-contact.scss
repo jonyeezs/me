@@ -17,10 +17,10 @@
   grid-column: 1 / span 2;
   grid-row: 1;
 
-  > span {
-    @include main-section-heading-text();
-    font-size: 4.95vw; // FIXME: for some odd reason the size differs from my local
-  }
+  @include main-section-heading-text();
+  text-align: center;
+  white-space: nowrap;
+  font-size: clamp(41px,4.95vw,75px);
 }
 
 .contact-location {
@@ -29,29 +29,32 @@
   grid-column: 2;
   grid-row: 1;
 
-  > span {
-    color: lighten($dark-colour, 20%);
-    float: right;
-    font-weight: 100;
-  }
+  color: lighten($dark-colour, 20%);
+  float: right;
+  font-weight: 100;
 
-  &.below-name {
-    // to set child's absolute to the grid cell.
-    position: relative;
-  }
+  // to set child's absolute to the grid cell.
+  position: relative;
+  
+  .below-name {
+    bottom: 12%;
+    font-size: 0.7em;
 
-  > .below-name {
-    bottom: 0;
-    font-size: 1em;
+    @media (min-width: 1025px) {
+      font-size: 0.76em;
+    }
+
     line-height: 0;
     position: absolute;
     right: 0;
+    padding: $padded-size 0;
   }
 }
 
 .contact-email {
   grid-column: 1;
   grid-row: 2;
+  margin-top: 8px;
 }
 
 .contact-mobile {
@@ -63,29 +66,36 @@
 .contact-mobile {
   @extend %common-item-setup;
 
-  padding: 5px 0;
+  padding: $padded-size 0;
   text-align: left;
 
-  span {
-    color: $dark-colour;
-    font: {
-      size: 1.5em;
-      weight: 300;
-    }
-    margin-left: 20%;
+  color: $dark-colour;
+  font: {
+    size: 1.5em;
+    weight: 300;
   }
+  margin-left: 20%;
 }
+
 
 .contact-media {
   @extend %common-item-setup;
 
+  margin-top: 8px;
+
   grid-column: 2;
   grid-row: 2 / span 2;
 
+  display: flex;
+  justify-content: end;
+
   .social-list {
+    display: flex;
+    width: fit-content;
+    margin: 0;
 
     > li {
-      padding: 0 $padded-size;
+      margin: 0 $padded-size;
     }
   }
 }
