@@ -7,6 +7,25 @@
         right: 7px;
     }
 
+    .social-list li {
+        width: fit-content;
+    }
+
+    .social-link {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .social-link span {
+        display: block;
+        position: static;
+        font-size: 10px;
+        height: auto;
+        padding-top: 8px;
+        width: fit-content;
+    }
+
     .expertise-passion__about-me {
         margin-top: 0px;
     }
@@ -26,12 +45,16 @@
         font-style: italic;
     }
 
+    p {
+        display: block;
+    }
+
     .expertise-skills table,
     .expertise-skills table tr,
     .expertise-skills table th,
     .expertise-skills table td,
+    .job-info,
     p {
-        page-break-inside: avoid;
-        page-break-after: aut;
+        break-inside: avoid;
     }
 }

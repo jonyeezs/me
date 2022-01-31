@@ -44,17 +44,6 @@
   }
 }
 
-.contact-email {
-  grid-column: 1;
-  grid-row: 2;
-  margin-top: 8px;
-}
-
-.contact-mobile {
-  grid-column: 1;
-  grid-row: 3;
-}
-
 .contact-email,
 .contact-mobile {
   @extend %common-item-setup;
@@ -68,6 +57,18 @@
     weight: 300;
   }
   margin-left: 20%;
+}
+
+.contact-email {
+  grid-column: 1;
+  grid-row: 2;
+  margin-top: 8px;
+}
+
+.contact-mobile {
+  grid-column: 1;
+  grid-row: 3;
+  padding-top: 0;
 }
 
 .contact-media {

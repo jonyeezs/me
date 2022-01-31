@@ -16,8 +16,8 @@ $timeline-marker-size: 16px;
 
 .section-achievement {
   border-top: $border;
-  margin-top: $padded-size;
-  padding-top: $padded-size;
+  margin-top: $padded-size * 2;
+  padding-top: $padded-size * 2;
 }
 
 .timeline {
