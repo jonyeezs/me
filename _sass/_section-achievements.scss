@@ -2,7 +2,7 @@
   background-color: $highlight-blue;
   border-radius: 50%;
   bottom: 0;
-  content: ' ';
+  content: " ";
   height: 18px;
   $calc: if($position == right, 10px, 7px);
   #{$position}: calc(100% - #{$calc});
@@ -24,7 +24,7 @@
   &::before {
     background-color: $highlight-blue;
     bottom: 0;
-    content: '';
+    content: "";
     left: 50%;
     position: absolute;
     top: $padded-size;
@@ -33,19 +33,18 @@
 }
 
 @mixin timeline-info($position) {
-  $opposite: 'left' !default;
-  $bottom-area: 'left bright' !default;
-  @if $position == 'left' {
-    $opposite: 'right';
-    $bottom-area: 'bleft right';
+  $opposite: "left" !default;
+  $bottom-area: "left bright" !default;
+  @if $position == "left" {
+    $opposite: "right";
+    $bottom-area: "bleft right";
   }
 
   .job-info {
     display: inline-grid;
     grid-gap: 2% 0;
     grid-template: {
-      areas: 'left right'
-            '#{$bottom-area}';
+      areas: "left right" "#{$bottom-area}";
       columns: auto;
       rows: 1fr 1fr;
     }
@@ -69,7 +68,6 @@
         text-align: #{$position};
       }
     }
-
   }
 }
 
@@ -116,7 +114,7 @@
   }
 
   &-lower {
-    @include secondary-information
+    @include secondary-information;
   }
 
   &-emphasis {
@@ -139,11 +137,40 @@
 }
 
 .read-text {
-  color: lighten($dark-colour, 10%);
-  font-family: $font-family-text;
-  font-size: 1em;
-  font-weight: 100;
-  line-height: 1.5em;
   padding: 0 8px;
+  @include paragraph;
   text-align: left;
+}
+
+.edu {
+  @extend %common-item-setup;
+
+  align-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  grid-column: 2 / span 2;
+  grid-row: 2;
+
+  > div {
+    flex: 1 1 50%;
+  }
+
+  .edu-heading {
+    @include main-information;
+    text-align: left;
+  }
+
+  .edu-subtitle {
+    @include secondary-information;
+    align-self: flex-end;
+    text-align: right;
+  }
+
+  .edu-fade {
+    color: lighten($dark-colour, 20%);
+    float: right;
+    font-weight: 100;
+    padding-right: 2px;
+    text-align-last: right;
+  }
 }

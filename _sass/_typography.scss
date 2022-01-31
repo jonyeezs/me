@@ -1,26 +1,26 @@
 @import "//fonts.googleapis.com/css?family=Nunito|Raleway|Roboto";
 
 $font-family-text: "Raleway", sans-serif;
-$font-family-display: 'Roboto', sans-serif;
+$font-family-display: "Roboto", sans-serif;
 
 @mixin headings($from: 1, $to: 6) {
   @for $i from $from through $to {
     h#{$i} {
-      @content
+      @content;
     }
   }
 }
 
 @include headings() {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
 .label {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 @function font-size-reduce($size-reduce: 1) {
-  @return $section-width / 10 - $size-reduce
+  @return $section-width / 10 - $size-reduce;
 }
 
 @mixin main-section-heading-text($size-reduce: 1) {
@@ -47,6 +47,16 @@ $font-family-display: 'Roboto', sans-serif;
     size: 1.3em;
     weight: 300;
   }
+}
+
+@mixin paragraph() {
+  color: lighten($dark-colour, 10%);
+  font: {
+    family: $font-family-text;
+    size: 1em;
+    weight: 100;
+  }
+  line-height: 1.5em;
 }
 
 @mixin section-emphasis() {

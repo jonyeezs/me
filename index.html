@@ -71,23 +71,20 @@
     <section class="section second section-expertise">
         <h2 class="section-title hide">Expertise</h2>
         <div class="expertise-container">
-            <div class="expertise-role" aria-label="Role">
-                <div>Full-stack Developer</div>
-            </div>
-            <div class="expertise-edu" aria-label="Education">
-                <div class="edu-heading" aria-label="Degree">Systems Engineering</div>
-                <div class="edu-subtitle" aria-label="Institution">University of Queensland, Australia</div>
-                <div class="edu-fade" aria-label="Year">2008</div>
-            </div>
-            <div class="expertise-passion" aria-label="Passion">
-                <ul class="unlist inline-pill-list horizontal-list">
-                    <li class="pill">UX Design</li>
-                    <li class="pill">Clean Code</li>
-                    <li class="pill">Automation</li>
-                    <li class="pill">Seeing Others Excel</li>
-                </ul>
-            </div>
-            <div class="expertise-skills" aria-label="Language Proficiency">
+            <section class="expertise-role" aria-label="Role">
+                <div class="expertise-role__main">Full-stack Developer</div>
+                <div class="expertise-role__focus">specialized on web</div>
+            </section>
+            <section class="expertise-passion" aria-label="Passion">
+                <p class="expertise-passion__about-me">
+                    <em>Product-focused</em> software engineer who has worked in different environments and challenges 
+                    from on-prem software to SaaS in microservice architecture.
+                    Self-disciplined in writing <em>elegant pragmatic code</em> that ensures an extensible future.
+                    Subscribes to the <em>Agile</em> manifesto (<span style="font-size: 0.5em">isn't just scrum</span>) and the <em>DevOps</em> movement. 
+                    I am passionate in <em>mentoring</em> my peers to become the future tech leads.
+                </p>
+            </section>
+            <section class="expertise-skills" aria-label="Language Proficiency">
                 <table class="open-table">
                     <tbody>
                         <tr>
@@ -172,7 +169,7 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </section>
         </div>
     </section>
     <section class="section third section-achievement">
@@ -254,6 +251,11 @@
                     </ul>
                 </div>
             </div>
+        </div>
+        <div class="edu" aria-label="Education">
+            <div class="edu-heading" aria-label="Degree">Systems Engineering</div>
+            <div class="edu-subtitle" aria-label="Institution">University of Queensland, Australia</div>
+            <div class="edu-fade" aria-label="Year">2008</div>
         </div>
     </section>
 </body>

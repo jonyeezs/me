@@ -18,42 +18,14 @@
   grid-column: 1 / span 4;
   grid-row: 1;
 
-  > div {
+  &__main {
     @include main-section-heading-text(2vw);
     text-align: center;
   }
-}
 
-.expertise-edu {
-  @extend %common-item-setup;
-
-  align-content: center;
-  display: flex;
-  flex-wrap: wrap;
-  grid-column: 2 / span 2;
-  grid-row: 2;
-
-  > div {
-    flex: 1 1 50%;
-  }
-
-  .edu-heading {
-    @include main-information;
-    text-align: left;
-  }
-
-  .edu-subtitle {
-    @include secondary-information;
-    align-self: flex-end;
-    text-align: right;
-  }
-
-  .edu-fade {
-    color: lighten($dark-colour, 20%);
-    float: right;
-    font-weight: 100;
-    padding-right: 2px;
-    text-align-last: right;
+  &__focus {
+    @include main-section-heading-text(4vw);
+    text-align: center;
   }
 }
 
@@ -63,27 +35,16 @@
   grid-column: 1 / span 4;
   grid-row: 3;
 
-  .inline-pill-list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
+  &__about-me {
+    @include paragraph;
     padding: 0 $padded-size;
+    text-align: justify;
+    hyphens: none;
 
-    > .pill {
-      background: $highlight-blue;
-      border: rgba($dark-colour, .06) 2px solid;
-      border-radius: 20px;
-      color: $white;
-
-      font: {
-        size: font-size-reduce(2vw) / 4;
-        weight: 400;
-      }
-
-      letter-spacing: .12em;
-      padding: $padded-size - .5%;
-      text-transform: uppercase;
+    em {
+      color: $dark-colour;
+      text-decoration: underline;
+      white-space: nowrap;
     }
   }
 }
@@ -108,8 +69,12 @@
   }
 
   .padding {
-    &-top { padding-top: 10px; }
-    &-right { padding-right: 5px; }
+    &-top {
+      padding-top: 10px;
+    }
+    &-right {
+      padding-right: 5px;
+    }
   }
 
   .shrink {
@@ -126,22 +91,22 @@
     }
 
     .k8s-icon {
-      @include svg-icon('../images/kubernetes.svg');
+      @include svg-icon("../images/kubernetes.svg");
     }
 
     .sql-icon {
-      @include svg-icon('../images/sql.svg');
+      @include svg-icon("../images/sql.svg");
     }
 
     .ngjs-icon {
-      @include svg-icon('../images/angularjs.svg');
+      @include svg-icon("../images/angularjs.svg");
       background-size: cover;
       height: 1em;
       width: 3em;
     }
 
     .nginx-icon {
-      @include svg-icon('../images/nginx.svg');
+      @include svg-icon("../images/nginx.svg");
       width: 1.5em;
     }
   }
