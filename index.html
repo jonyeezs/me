@@ -4,21 +4,22 @@
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123340301-1"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'UA-123340301-1');
+        gtag('config', 'UA-123340301-1');
     </script>
     <meta charset="utf-8">
     <link rel="icon" sizes="192x192" href="assets/resume.ico">
     <title>Résumé - Jonathan Yee</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css"
+        integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="assets/fonts/fa-solid.min.css">
     <link rel="stylesheet" type="text/css" href="assets/fonts/fa-light.min.css">
     <link rel="stylesheet" type="text/css" href="assets/fonts/fa-brands.min.css">
     <link rel="stylesheet" type="text/css" href="assets/fonts/fontawesome.min.css">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.14.0/devicon.min.css">
     <link rel="stylesheet" type="text/css" href="assets/stylesheets/default.css">
 </head>
 
@@ -77,10 +78,11 @@
             </section>
             <section class="expertise-passion" aria-label="Passion">
                 <p class="expertise-passion__about-me">
-                    <em>Product-focused</em> software engineer who has worked in different environments and challenges 
+                    <em>Product-focused</em> software engineer who has worked in different environments and challenges
                     from on-prem software to SaaS in microservice architecture.
                     Self-disciplined in writing <em>elegant pragmatic code</em> that ensures an extensible future.
-                    Subscribes to the <em>Agile</em> manifesto (<span style="font-size: 0.5em">isn't just scrum</span>) and the <em>DevOps</em> movement. 
+                    Subscribes to the <em>Agile</em> manifesto (<span style="font-size: 0.5em">isn't just scrum</span>)
+                    and the <em>DevOps</em> movement.
                     I am passionate in <em>mentoring</em> my peers to become the future tech leads.
                 </p>
             </section>
@@ -88,82 +90,114 @@
                 <table class="open-table">
                     <tbody>
                         <tr>
-                            <th class="table-heading shrink padding-right" title="Understand fundamentals, concepts and principles and have moved beyond 'getting started' guides">Basics<i class="fal fa-info-circle tooltip"></i></th>
+                            <th class="table-heading padding-right">
+                                Basics<i class="fal fa-info-circle tooltip"></i>
+                                <div class="tooltip-popup">
+                                    Understand fundamentals, concepts and principles and have moved beyond 'getting
+                                    started' guides
+                                </div>
+                            </th>
                             <td class="padding-top">
+                                <div title="Golang">
+                                    <i class="devicon-go-original-wordmark colored" data-scale="adequate">
+                                        <span class="hide">Golang</span></i>
+                                </div>
                                 <div title="Ruby">
-                                    <i class="devicon-ruby-plain colored"
-                                        data-scale="promotable">
+                                    <i class="devicon-ruby-plain colored" data-scale="adequate">
                                         <span class="hide">Ruby</span></i>
                                 </div>
                                 <div title="Nginx">
-                                    <i class="nginx-icon"
-                                        data-scale="minimally">Nginx</i>
+                                    <i class="devicon-nginx-original colored" data-scale="minimally"><span
+                                            class="hide">Nginx</span></i>
+                                </div>
+                                <div title="AWS">
+                                    <i class="devicon-amazonwebservices-original" data-scale="minimally"><span
+                                            class="hide">AWS</span></i>
                                 </div>
                                 <div title="Kubernetes">
-                                    <i class="k8s-icon" data-scale="adequate">Kubernetes
+                                    <i class="devicon-kubernetes-plain colored" data-scale="adequate"><span
+                                            class="hide">Kubernetes</span>
                                     </i>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <th class="table-heading shrink padding-right" title="Can be relied to complete tasks, with minimum assistance, such as maintaining code or commencing new work on a professional level">Capable<i class="fal fa-info-circle tooltip"></i></th>
+                            <th class="table-heading padding-right">
+                                Capable<i class="fal fa-info-circle tooltip"></i>
+                                <div class="tooltip-popup">
+                                    Can be relied to complete tasks, with minimum assistance, such as maintaining code
+                                    or commencing new work on a professional level
+                                </div>
+                            </th>
                             <td class="padding-top">
                                 <div title="Docker">
-                                    <i class="devicon-docker-plain colored"
-                                    data-scale="adequate">
-                                    <span class="hide">Docker</span></i>
-                                </div>
-                                <div title="SASS">
-                                    <i class="devicon-sass-original colored"
-                                    data-scale="minimally">
-                                    <span class="hide">SASS</span></i>
+                                    <i class="devicon-docker-plain-wordmark colored" data-scale="adequate">
+                                        <span class="hide">Docker</span></i>
                                 </div>
                                 <div title="SQL">
-                                    <i class="sql-icon" data-scale="adequate">SQL
+                                    <i class="devicon-microsoftsqlserver-plain-wordmark" data-scale="adequate"><span
+                                            class="hide">MSQL</span>
+                                    </i>
+                                </div>
+                                <div title="Azure Devops">
+                                    <i class="devicon-azure-plain-wordmark colored" data-scale="adequate"><span
+                                            class="hide">Azure
+                                            Devops</span>
                                     </i>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <th class="table-heading shrink padding-right" title="Able to participate in discussions on a seniority level and provide relevant ideas and coach">Knowledgeable<i class="fal fa-info-circle tooltip"></i></th>
+                            <th class="table-heading padding-right">
+                                Knowledgeable<i class="fal fa-info-circle tooltip"></i>
+                                <div class="tooltip-popup">
+                                    Able to participate in discussions on a seniority level and provide relevant ideas
+                                    and coach
+                                </div>
+                            </th>
                             <td class="padding-top">
                                 <div title="CSS">
-                                    <i class="devicon-css3-plain"
-                                    data-scale="adequate">
-                                    <span class="hide">CSS</span></i>
+                                    <i class="devicon-css3-plain" data-scale="adequate">
+                                        <span class="hide">CSS</span></i>
+                                </div>
+                                <div title="SASS">
+                                    <i class="devicon-sass-original colored" data-scale="adequate">
+                                        <span class="hide">SASS</span></i>
                                 </div>
                                 <div title="C#">
-                                    <i class="devicon-csharp-plain colored"
-                                    data-scale="minimally">
-                                    <span class="hide">C#</span></i>
-                                </div>
-                                <div title="TypeScript">
-                                    <i class="devicon-typescript-plain colored"
-                                    data-scale="adequate">
-                                    <span class="hide">TypeScript</span></i>
+                                    <i class="devicon-csharp-plain colored" data-scale="promotable">
+                                        <span class="hide">C#</span></i>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <th class="table-heading shrink padding-right" title="Provide guidance, foster greater understanding, and be counted on as the point person">Expert<i class="fal fa-info-circle tooltip"></i></th>
+                            <th class="table-heading padding-right">
+                                Expert<i class="fal fa-info-circle tooltip"></i>
+                                <div class="tooltip-popup">
+                                    Provide guidance, foster greater understanding, and be counted on as the point
+                                    person
+                                </div>
+                            </th>
                             <td class="padding-top">
                                 <div title="HTML5">
-                                    <i class="devicon-html5-plain-wordmark colored"
-                                    data-scale="adequate">
-                                    <span class="hide">HTML5</span></i>
+                                    <i class="devicon-html5-plain-wordmark colored" data-scale="adequate">
+                                        <span class="hide">HTML5</span></i>
                                 </div>
                                 <div title="AngularJS">
-                                    <i class="ngjs-icon"
-                                    data-scale="promotable">AngularJS</i>
+                                    <i class="ngjs-icon" data-scale="promotable">
+                                        <span class="hide">AngularJS</span></i>
                                 </div>
                                 <div title="Angular">
-                                    <i class="devicon-angularjs-plain colored"
-                                    data-scale="adequate"><span class="hide">Angular</span></i>
+                                    <i class="devicon-angularjs-plain colored" data-scale="adequate">
+                                        <span class="hide">Angular</span></i>
+                                </div>
+                                <div title="TypeScript">
+                                    <i class="devicon-typescript-plain colored" data-scale="promotable">
+                                        <span class="hide">TypeScript</span></i>
                                 </div>
                                 <div title="Javascript">
-                                    <i class="devicon-javascript-plain colored"
-                                    data-scale="promotable">
-                                    <span class="hide">Javascript</span></i>
+                                    <i class="devicon-javascript-plain colored" data-scale="promotable">
+                                        <span class="hide">Javascript</span></i>
                                 </div>
                             </td>
                         </tr>
@@ -259,4 +293,5 @@
         </div>
     </section>
 </body>
+
 </html>

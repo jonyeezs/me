@@ -61,6 +61,6 @@ $font-family-display: "Roboto", sans-serif;
 
 @mixin section-emphasis() {
   color: lighten($dark-colour, 4%);
-  font-size: font-size-reduce(4.3vw);
-  font-weight: 400;
+  font-size: 1.2em;
+  font-weight: 700;
 }

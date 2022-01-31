@@ -43,7 +43,7 @@
 
     em {
       color: $dark-colour;
-      text-decoration: underline;
+      text-decoration: underline $highlight-blue;
       white-space: nowrap;
     }
   }
@@ -66,6 +66,47 @@
     border-left: lighten($dark-colour, 60%) 2px solid;
     padding-left: $padded-size;
     text-align: left;
+    width: 165px;
+
+    @media (min-width: 1025px) {
+      width: 180px;
+    }
+
+    .tooltip-popup {
+      margin: 4px 0 8px 0;
+      color: lighten($dark-colour, 40%);
+      font-size: 0.6em;
+      height: max-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height ease-in 400ms;
+    }
+
+    &:hover {
+      .tooltip-popup {
+        max-height: 200px;
+        opacity: 1;
+        animation-name: popup;
+        animation-duration: 500ms;
+      }
+    }
+
+    @keyframes popup {
+      0% {
+        height: 0;
+        opacity: 0;
+      }
+      25% {
+        height: 50px;
+      }
+      30% {
+        opacity: 0.5;
+      }
+      100% {
+        height: max-content;
+        opacity: 1;
+      }
+    }
   }
 
   .padding {
@@ -77,11 +118,6 @@
     }
   }
 
-  .shrink {
-    white-space: nowrap;
-    width: 1px;
-  }
-
   td {
     font-size: font-size-reduce(3vw);
 
@@ -90,24 +126,11 @@
       padding: 0 1vw;
     }
 
-    .k8s-icon {
-      @include svg-icon("../images/kubernetes.svg");
-    }
-
-    .sql-icon {
-      @include svg-icon("../images/sql.svg");
-    }
-
     .ngjs-icon {
       @include svg-icon("../images/angularjs.svg");
       background-size: cover;
       height: 1em;
       width: 3em;
-    }
-
-    .nginx-icon {
-      @include svg-icon("../images/nginx.svg");
-      width: 1.5em;
     }
   }
 
