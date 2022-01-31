@@ -1,14 +1,17 @@
-@mixin timeline-marker($position) {
+$timeline-track-width: 2px;
+$timeline-marker-size: 16px;
+
+@mixin timeline-marker($position, $padding-to-content) {
   background-color: $highlight-blue;
   border-radius: 50%;
   bottom: 0;
   content: " ";
-  height: 18px;
-  $calc: if($position == right, 10px, 7px);
-  #{$position}: calc(100% - #{$calc});
+  height: $timeline-marker-size;
+
+  #{$position}: calc(100% + $padding-to-content / 2);
   position: absolute;
-  top: 4%;
-  width: 18px;
+  top: 10%;
+  width: $timeline-marker-size;
 }
 
 .section-achievement {
@@ -25,10 +28,10 @@
     background-color: $highlight-blue;
     bottom: 0;
     content: "";
-    left: 50%;
+    left: 0%;
     position: absolute;
-    top: $padded-size;
-    width: 2px;
+    top: calc($padded-size + ($timeline-marker-size / 2));
+    width: $timeline-track-width;
   }
 }
 
@@ -42,6 +45,7 @@
 
   .job-info {
     display: inline-grid;
+    position: relative;
     grid-gap: 2% 0;
     grid-template: {
       areas: "left right" "#{$bottom-area}";
@@ -64,6 +68,7 @@
       }
 
       &-lower {
+        font-size: 1em;
         grid-area: b#{$position};
         text-align: #{$position};
       }
@@ -73,26 +78,17 @@
 
 .timeline-item {
   @extend %common-item-setup;
+  $padding-to-track: 18px;
+
   clear: both;
   position: relative;
-  width: 50% - ($padded-size * 2);
+  width: calc(100% - ($padded-size * 2));
+  padding-left: $padding-to-track;
 
-  &:nth-child(odd) {
-    @include timeline-info(left);
+  @include timeline-info(right);
 
-    &::after {
-      @include timeline-marker(left);
-    }
-  }
-
-  &:nth-child(even) {
-    float: right;
-
-    @include timeline-info(right);
-
-    &::after {
-      @include timeline-marker(right);
-    }
+  .job-info::after {
+    @include timeline-marker(right, $padding-to-track);
   }
 }
 
@@ -150,6 +146,10 @@
   flex-wrap: wrap;
   grid-column: 2 / span 2;
   grid-row: 2;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: -8px;
+  margin-right: -8px;
 
   > div {
     flex: 1 1 50%;
