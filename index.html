@@ -21,17 +21,20 @@
     <link rel="stylesheet" type="text/css" href="assets/fonts/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.14.0/devicon.min.css">
     <link rel="stylesheet" type="text/css" href="assets/stylesheets/default.css">
+    <link rel="stylesheet" media="print" href="assets/stylesheets/print.css" />
 </head>
 
 <body>
     <section class="section first section-contact">
         <h2 class="section-title hide">Contact Information</h2>
         <div class="contact-container">
-            <div class="contact-name" aria-label="Name">
-                Jonathan Zuan Sheng Yee
-            </div>
-            <div class="contact-location" aria-label="Location">
-                <span aria-label="Location" class="below-name">Brisbane, Australia</span>
+            <div class="contact-container__heading">
+                <div class="contact-name" aria-label="Name">
+                    Jonathan Zuan Sheng Yee
+                </div>
+                <div class="contact-location" aria-label="Location">
+                    Brisbane, Australia
+                </div>
             </div>
             <div class="contact-email" aria-label="Email">
                 <a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#x6a;&#x6f;&#110;&#121;&#x65;&#101;&#122;&#115;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#x6d;"
@@ -220,32 +223,30 @@
                     <h4 class="highlight-secondary" aria-label="Position">Senior Full-stack Engineer</h4>
                     <div class="highlight-lower" aria-label="Company">Everwealth (Auto & General Ltd)</div>
                 </div>
-                <div>
-                    <ul class="unlist">
-                        <li class="list-achievement">
-                            <h5 class="label highlight-emphasis no-horizontal-margin">Managed and led the web
-                                development life cycle (Angular)</h5>
-                            <div class="indent read-text">
-                                <p>Prioritized and governed tech debt and new features; whilst guiding the web
-                                    development team through best practices and overall technical vision of the app.</p>
-                                <p>Architected three major complex features: metadata driven search filter, a finite
-                                    state machine wizard-like component, and a serilog inspired logging platform.</p>
-                                <p>Improved the CI/CD speed and efficiency by 12% using package caching, parallel jobs
-                                    and
-                                    githooks.</p>
-                            </div>
-                        </li>
-                        <li class="list-achievement">
-                            <h5 class="label highlight-emphasis no-horizontal-margin">Full-ownership of client data
-                                access point project</h5>
-                            <div class="indent read-text">
-                                <p>Research, design and implement an ETL-like system to
-                                    present the platform's data to the client in a more meaningful way.</p>
-                                <p>Help pivot to SQL views after hitting limitations.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                <ul class="unlist">
+                    <li class="list-achievement">
+                        <h5 class="label highlight-emphasis no-horizontal-margin">Managed and led the web
+                            development life cycle (Angular)</h5>
+                        <div class="indent read-text">
+                            <p>Prioritized and governed tech debt and new features; whilst guiding the web
+                                development team through best practices and overall technical vision of the app.</p>
+                            <p>Architected three major complex features: metadata driven search filter, a finite
+                                state machine wizard-like component, and a serilog inspired logging platform.</p>
+                            <p>Improved the CI/CD speed and efficiency by 12% using package caching, parallel jobs
+                                and
+                                githooks.</p>
+                        </div>
+                    </li>
+                    <li class="list-achievement">
+                        <h5 class="label highlight-emphasis no-horizontal-margin">Full-ownership of client data
+                            access point project</h5>
+                        <div class="indent read-text">
+                            <p>Research, design and implement an ETL-like system to
+                                present the platform's data to the client in a more meaningful way.</p>
+                            <p>Help pivot to SQL views after hitting limitations.</p>
+                        </div>
+                    </li>
+                </ul>
             </div>
             <div class="timeline-item">
                 <div class="job-info">
@@ -253,32 +254,30 @@
                     <h4 class="highlight-secondary" aria-label="Position">Senior Software Engineer</h4>
                     <div class="highlight-lower" aria-label="Company">Globalx Pty Ltd</div>
                 </div>
-                <div>
-                    <ul class="unlist">
-                        <li class="list-achievement">
-                            <h5 class="label highlight-emphasis no-horizontal-margin">Increase efficiency of the
-                                developer's work by introducing chatbots"</h5>
-                            <div class="indent read-text">
-                                <p>Started a chatbot on Hipchat to deploy microservices through Octopus (CI/CD).
-                                    Minimize a 3-step process to a 1-step process.</p>
-                                </p>
-                                <p>The chatbot was able to recognize flaky services and prompted the team's chatroom.
-                                </p>
-                                <p>Created a CLI that helped scaffold the developer's local environment (on Kong).</p>
-                            </div>
-                        </li>
-                        <li class="list-achievement">
-                            <h5 class="label highlight-emphasis no-horizontal-margin">Increase the teams overall skill
-                                in Angular(/JS)</h5>
-                            <div class="indent read-text">
-                                <p>Mentor and advice across teams through workshops and informal discussions.</p>
-                                <p>Key contributor in introducing Angular, and coaching better code structure (ie:
-                                    feature module structure),
-                                    advance toolings (eg: reactive forms), and architecture decisions.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                <ul class="unlist">
+                    <li class="list-achievement">
+                        <h5 class="label highlight-emphasis no-horizontal-margin">Increase efficiency of the
+                            developer's work by introducing chatbots</h5>
+                        <div class="indent read-text">
+                            <p>Started a chatbot on Hipchat to deploy microservices through Octopus (CI/CD).
+                                Minimize a 3-step process to a 1-step process.</p>
+                            </p>
+                            <p>The chatbot was able to recognize flaky services and prompted the team's chatroom.
+                            </p>
+                            <p>Created a CLI that helped scaffold the developer's local environment (on Kong).</p>
+                        </div>
+                    </li>
+                    <li class="list-achievement">
+                        <h5 class="label highlight-emphasis no-horizontal-margin">Increase the teams overall skill
+                            in Angular(/JS)</h5>
+                        <div class="indent read-text">
+                            <p>Mentor and advice across teams through workshops and informal discussions.</p>
+                            <p>Key contributor in introducing Angular, and coaching better code structure (ie:
+                                feature module structure),
+                                advance toolings (eg: reactive forms), and architecture decisions.</p>
+                        </div>
+                    </li>
+                </ul>
             </div>
             <div class="timeline-item">
                 <div class="job-info">
@@ -286,33 +285,31 @@
                     <h4 class="highlight-secondary" aria-label="Position">Developer/Technical Consultant</h4>
                     <div class="highlight-lower" aria-label="Company">Insight Informatics Pty Ltd</div>
                 </div>
-                <div>
-                    <ul class="unlist">
-                        <li class="list-achievement">
-                            <h5 class="label highlight-emphasis no-horizontal-margin">Streamlined the on-boarding
-                                training</h5>
-                            <div class="indent read-text">
-                                <p>New clients were calling in too many times on support issues. I identified what
-                                    knowledge was lacking; and revised the training material to focus on their needs.
-                                </p>
-                                <p>Improvements were noticed with less support calls and better feedback from client's
-                                    technical staff.</p>
-                            </div>
-                        </li>
-                        <li class="list-achievement">
-                            <h5 class="label highlight-emphasis no-horizontal-margin">Helped paved the way for mobile
-                                presence</h5>
-                            <div class="indent read-text">
-                                <p>Spearheaded the project to modernize the RPC SOAP API to a minimal REST JSON API,
-                                    which allowed clients to integrate better. It was a massive undertaking with changes
-                                    in implementation and documentation on a system that could not have supported it at
-                                    that time.</p>
-                                <p>Led and self-managed the deployment of our first mobile App from design to publishing
-                                    (using Cordova and BackboneJS). First beta version was out in 2 weeks.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                <ul class="unlist">
+                    <li class="list-achievement">
+                        <h5 class="label highlight-emphasis no-horizontal-margin">Streamlined the on-boarding
+                            training</h5>
+                        <div class="indent read-text">
+                            <p>New clients were calling in too many times on support issues. I identified what
+                                knowledge was lacking; and revised the training material to focus on their needs.
+                            </p>
+                            <p>Improvements were noticed with less support calls and better feedback from client's
+                                technical staff.</p>
+                        </div>
+                    </li>
+                    <li class="list-achievement">
+                        <h5 class="label highlight-emphasis no-horizontal-margin">Helped paved the way for mobile
+                            presence</h5>
+                        <div class="indent read-text">
+                            <p>Spearheaded the project to modernize the RPC SOAP API to a minimal REST JSON API,
+                                which allowed clients to integrate better. It was a massive undertaking with changes
+                                in implementation and documentation on a system that could not have supported it at
+                                that time.</p>
+                            <p>Led and self-managed the deployment of our first mobile App from design to publishing
+                                (using Cordova and BackboneJS). First beta version was out in 2 weeks.</p>
+                        </div>
+                    </li>
+                </ul>
             </div>
             <div class="timeline-item">
                 <div class="job-info">
@@ -320,30 +317,28 @@
                     <h4 class="highlight-secondary" aria-label="Position">Programmer</h4>
                     <div class="highlight-lower" aria-label="Company">Various internships</div>
                 </div>
-                <div>
-                    <ul class="unlist">
-                        <li class="list-achievement">
-                            <h5 class="label highlight-emphasis no-horizontal-margin">Improved efficiency by reducing
-                                on-site efforts</h5>
-                            <div class="indent read-text">
-                                <p>Instead of going to a physical digital signage situated around the city to upload
-                                    news, images, and videos, I came up with a solution to automate content delivery via
-                                    pull notification.</p>
-                            </div>
-                        </li>
-                        <li class="list-achievement">
-                            <h5 class="label highlight-emphasis no-horizontal-margin">Prototype OMR application accepted
-                                by Client on first proposal</h5>
-                            <div class="indent read-text">
-                                <p>I was able to comprehend Client's requirements and made queries that allow for quick
-                                    feedback and clarification.</p>
-                                <p>End result was an application (using VB) that ticked the boxes and, surprisingly,
-                                    went
-                                    straight into production usage.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                <ul class="unlist">
+                    <li class="list-achievement">
+                        <h5 class="label highlight-emphasis no-horizontal-margin">Improved efficiency by reducing
+                            on-site efforts</h5>
+                        <div class="indent read-text">
+                            <p>Instead of going to a physical digital signage situated around the city to upload
+                                news, images, and videos, I came up with a solution to automate content delivery via
+                                pull notification.</p>
+                        </div>
+                    </li>
+                    <li class="list-achievement">
+                        <h5 class="label highlight-emphasis no-horizontal-margin">Prototype OMR application accepted
+                            by Client on first proposal</h5>
+                        <div class="indent read-text">
+                            <p>I was able to comprehend Client's requirements and made queries that allow for quick
+                                feedback and clarification.</p>
+                            <p>End result was an application (using VB) that ticked the boxes and, surprisingly,
+                                went
+                                straight into production usage.</p>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="edu" aria-label="Education">

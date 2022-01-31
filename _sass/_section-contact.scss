@@ -8,46 +8,39 @@
     template-columns: repeat(2, 1fr);
     template-rows: repeat(3, auto);
   }
-}
 
-// Grid layout
-.contact-name {
-  @extend %common-item-setup;
+  &__heading {
+    @extend %common-item-setup;
 
-  grid-column: 1 / span 2;
-  grid-row: 1;
+    grid-column: 1 / span 2;
+    grid-row: 1;
 
-  @include main-section-heading-text();
-  text-align: center;
-  white-space: nowrap;
-  font-size: clamp(41px,4.95vw,75px);
-}
+    position: relative;
+    justify-self: center;
+    width: fit-content;
 
-.contact-location {
-  @extend %common-item-setup;
-
-  grid-column: 2;
-  grid-row: 1;
-
-  color: lighten($dark-colour, 20%);
-  float: right;
-  font-weight: 100;
-
-  // to set child's absolute to the grid cell.
-  position: relative;
-  
-  .below-name {
-    bottom: 12%;
-    font-size: 0.7em;
-
-    @media (min-width: 1025px) {
-      font-size: 0.76em;
+    .contact-name {
+      @include main-section-heading-text();
+      text-align: center;
+      white-space: nowrap;
+      font-size: clamp(41px, 4.95vw, 75px);
     }
 
-    line-height: 0;
-    position: absolute;
-    right: 0;
-    padding: $padded-size 0;
+    .contact-location {
+      @extend %common-item-setup;
+      position: absolute;
+      left: calc(100% - 19ch);
+      bottom: 5%;
+      padding: $padded-size 0;
+      font-size: 0.7em;
+
+      @media (min-width: 1025px) {
+        font-size: 0.76em;
+      }
+      font-weight: 100;
+      line-height: 0;
+      color: lighten($dark-colour, 20%);
+    }
   }
 }
 
@@ -76,7 +69,6 @@
   }
   margin-left: 20%;
 }
-
 
 .contact-media {
   @extend %common-item-setup;

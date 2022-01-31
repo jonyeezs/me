@@ -1,0 +1,37 @@
+@media print {
+    .section {
+        width: 70vw;
+    }
+
+    .contact-location .below-name {
+        right: 7px;
+    }
+
+    .expertise-passion__about-me {
+        margin-top: 0px;
+    }
+
+    .expertise-skills .table-heading {
+        width: 48%;
+    }
+
+    .expertise-skills .table-heading .tooltip {
+        display: none;
+    }
+
+    .expertise-skills .table-heading .tooltip-popup {
+        margin-bottom: 18px;
+        max-height: max-content;
+        font-size: 10px;
+        font-style: italic;
+    }
+
+    .expertise-skills table,
+    .expertise-skills table tr,
+    .expertise-skills table th,
+    .expertise-skills table td,
+    p {
+        page-break-inside: avoid;
+        page-break-after: aut;
+    }
+}
