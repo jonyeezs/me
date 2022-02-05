@@ -5,6 +5,8 @@ import { GameOnRoutingModule } from './game-on-routing.module';
 import { GameOnComponent } from './game-on.component';
 import { HeroModule } from './hero/hero.module';
 import { ControllerService } from './services/controller/controller.service';
+import { MobModule } from './mob/mob.module';
+import { ContainerModule } from './container/container.module';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { ControllerService } from './services/controller/controller.service';
   imports: [
     CommonModule,
     GameOnRoutingModule,
-    HeroModule
+    HeroModule,
+    MobModule,
+    ContainerModule
   ],
   providers: [ControllerService]
 })
