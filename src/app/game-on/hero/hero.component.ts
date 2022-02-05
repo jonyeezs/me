@@ -1,7 +1,7 @@
 import {
   Component, OnInit, ChangeDetectionStrategy, ViewChild, ElementRef, OnDestroy
 } from '@angular/core';
-import { combineLatest, filter, map, Observable, Subscription } from 'rxjs';
+import { combineLatest, distinctUntilChanged, map, Observable, Subscription } from 'rxjs';
 import { CollisionService } from '../services/collision.service';
 import { ControllerService } from '../services/controller/controller.service';
 
@@ -9,6 +9,11 @@ import { ControllerService } from '../services/controller/controller.service';
   selector: 'app-hero',
   template: `
     <div #body class="w-8 h-10 bg-slate-700 translate-x-0 will-change-transform">
+      <ng-container *ngIf="attack$ | async as attack">
+        <div>
+          {{ attack }}
+        </div>
+      </ng-container>  
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -17,6 +22,13 @@ export class HeroComponent implements OnInit, OnDestroy {
 
   @ViewChild('body', { static: true, read: ElementRef })
   public body: ElementRef<HTMLElement>;
+
+  /**
+   * puff - when nothing is there to hit
+   * pow - when there's a mob to hit
+   * empty string - idle
+   */
+  public attack$: Observable<'puff'|'pow'|''>;
 
   private subscriptions = new Subscription();
 
@@ -44,9 +56,12 @@ export class HeroComponent implements OnInit, OnDestroy {
 
     this.collision.register('hero', this.body.nativeElement);
 
-    // this.subscriptions.add(
-    //   this.collision.collisionDetect().subscribe((v) => console.log(v))
-    // );
+    this.attack$ = combineLatest([
+      this.collision.collisionDetect().pipe(map(mbs => mbs.length > 0)),
+      this.controller.attack()])
+      .pipe(
+        map(([hasMob, attacking]) => attacking ? (hasMob ? 'pow' : 'puff') : ''),
+        distinctUntilChanged());
   }
 
   ngOnDestroy(): void {
@@ -59,5 +74,4 @@ export class HeroComponent implements OnInit, OnDestroy {
     const value = (/(?: |)(\d+)px/.exec(raw) ?? [null ,0])[1] ?? 0;
     return +value;
   }
-
 }

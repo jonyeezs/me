@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { debounceTime, filter, fromEvent, map, Observable } from 'rxjs';
-
+import { debounceTime, distinctUntilChanged, filter, fromEvent, map, Observable } from 'rxjs';
 
 @Injectable()
 export class ControllerService {
@@ -27,9 +26,9 @@ export class ControllerService {
   public attack(): Observable<boolean> {
     return fromEvent<KeyboardEvent>(document, 'keyup')
       .pipe(
-        filter((k: KeyboardEvent) => k.key === "a"),
-        debounceTime(800),
-        map(() => true)
+        map((k: KeyboardEvent) => k.key === "a"),
+        distinctUntilChanged(),
+        debounceTime(200),
       );
   }
 
