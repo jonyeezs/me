@@ -2,9 +2,11 @@ import {
   Component, ChangeDetectionStrategy,
   ElementRef, OnDestroy, AfterViewInit, OnInit,
 } from '@angular/core';
-import { distinctUntilChanged, map, Subscription } from 'rxjs';
+import { combineLatest, distinctUntilChanged, map, Subject, takeUntil } from 'rxjs';
+import { difference } from 'lodash-es';
 import { GameContainer } from '../container/container.token';
 import { CollisionService } from '../services/collision/collision.service';
+import { ControllerService } from '../services/controller/controller.service';
 import { SpawnCommunicator } from './spawn.token';
 
 @Component({
@@ -32,14 +34,16 @@ export class MobComponent implements OnInit, AfterViewInit, OnDestroy {
    */
   public callCard: string
 
+  private HP = 3;
   private walkingAnimation: Animation;
-  private collisionSubscription: Subscription;
+  private killCode = new Subject<void>();
 
   constructor(
     private mobEle: ElementRef<HTMLElement>,
     private container: GameContainer,
     private spawn: SpawnCommunicator,
-    private collision: CollisionService) { }
+    private collision: CollisionService,
+    private controller: ControllerService) { }
   
   
   ngOnInit(): void {
@@ -47,10 +51,11 @@ export class MobComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.collision.register('mob', this.mobEle.nativeElement);
 
-    this.collisionSubscription = this.collision.collisionDetect()
+    this.collision.collisionDetect()
       .pipe(
         map(mbs => mbs.some(m => m === this.callCard)),
-        distinctUntilChanged())
+        distinctUntilChanged(),
+        takeUntil(this.killCode))
       .subscribe((hasCollided) => {
         if (hasCollided) {
           this.walkingAnimation.pause();
@@ -58,6 +63,8 @@ export class MobComponent implements OnInit, AfterViewInit, OnDestroy {
           this.walkingAnimation?.playState === 'paused' && this.walkingAnimation.play();
         }
       });
+    
+    this.battlePrep();
   }
   
   ngAfterViewInit(): void {
@@ -73,14 +80,36 @@ export class MobComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.walkingAnimation = this.mobEle.nativeElement.animate(mobWalking, walkTiming);
     
-    this.walkingAnimation.finished.then(() => {
+    this.walkingAnimation.finished.catch().finally(() => {
       this.spawn.done(this.callCard);
-    })
+    });
   }
 
   ngOnDestroy(): void {
     this.walkingAnimation.cancel();
+    this.killCode.next();
+    this.killCode.complete();
     this.collision.unregister('mob', this.mobEle.nativeElement);
-    this.collisionSubscription.unsubscribe();
+  }
+
+  private battlePrep() {
+    combineLatest([
+      this.collision.collisionDetect().pipe(
+        distinctUntilChanged((prev, curr) => difference(curr, prev).length === 0),
+        map(mbs => mbs.some(m => m === this.callCard))),
+      this.controller.attack()]).pipe(
+      takeUntil(this.killCode)
+    ).subscribe(([hasCollided, isAttacked]) => {
+      if (!hasCollided || !isAttacked) {
+        return;
+      }
+
+      this.HP--;
+
+      if (this.HP === 0) {
+        this.killCode.next();
+        this.spawn.done(this.callCard);
+      }
+    });
   }
 }
