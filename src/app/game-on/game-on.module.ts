@@ -7,7 +7,7 @@ import { HeroModule } from './hero/hero.module';
 import { ControllerService } from './services/controller/controller.service';
 import { MobModule } from './mob/mob.module';
 import { ContainerModule } from './container/container.module';
-import { CollisionService } from './services/collision.service';
+import { CollisionService } from './services/collision/collision.service';
 
 
 @NgModule({

@@ -2,7 +2,7 @@ import {
   Component, OnInit, ChangeDetectionStrategy, ViewChild, ElementRef, OnDestroy
 } from '@angular/core';
 import { combineLatest, distinctUntilChanged, map, Observable, Subscription } from 'rxjs';
-import { CollisionService } from '../services/collision.service';
+import { CollisionService } from '../services/collision/collision.service';
 import { ControllerService } from '../services/controller/controller.service';
 
 @Component({

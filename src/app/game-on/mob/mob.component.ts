@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 import { distinctUntilChanged, map, Subscription } from 'rxjs';
 import { GameContainer } from '../container/container.token';
-import { CollisionService } from '../services/collision.service';
+import { CollisionService } from '../services/collision/collision.service';
 import { SpawnCommunicator } from './spawn.token';
 
 @Component({
