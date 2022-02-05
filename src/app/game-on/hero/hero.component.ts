@@ -1,7 +1,8 @@
 import {
   Component, OnInit, ChangeDetectionStrategy, ViewChild, ElementRef, OnDestroy
 } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { combineLatest, filter, map, Observable, Subscription } from 'rxjs';
+import { CollisionService } from '../services/collision.service';
 import { ControllerService } from '../services/controller/controller.service';
 
 @Component({
@@ -22,7 +23,7 @@ export class HeroComponent implements OnInit, OnDestroy {
   private readonly MOVEMENT = '--tw-translate-x';
   private readonly STEPSIZE = 3;
 
-  constructor(private controller: ControllerService) { }
+  constructor(private controller: ControllerService, private collision: CollisionService) { }
   
   ngOnInit(): void {
     this.subscriptions.add(
@@ -40,10 +41,17 @@ export class HeroComponent implements OnInit, OnDestroy {
         this.body.nativeElement.style.setProperty(this.MOVEMENT, `${newPos}px`);
       })
     );
+
+    this.collision.register('hero', this.body.nativeElement);
+
+    // this.subscriptions.add(
+    //   this.collision.collisionDetect().subscribe((v) => console.log(v))
+    // );
   }
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
+    this.collision.unregister('mob', this.body.nativeElement);
   }
 
   private retrievePosition() {

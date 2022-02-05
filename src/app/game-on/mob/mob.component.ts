@@ -1,15 +1,15 @@
 import {
   Component, ChangeDetectionStrategy,
-  ElementRef, OnDestroy, AfterViewInit,
+  ElementRef, OnDestroy, AfterViewInit, OnInit,
 } from '@angular/core';
+import { distinctUntilChanged, map, Subscription } from 'rxjs';
 import { GameContainer } from '../container/container.token';
+import { CollisionService } from '../services/collision.service';
 import { SpawnCommunicator } from './spawn.token';
 
 @Component({
   selector: 'app-mob',
-  template: `
-    {{ callCard }}
-  `,
+  template: ``,
   styles: [
     `
       :host {
@@ -26,18 +26,39 @@ import { SpawnCommunicator } from './spawn.token';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MobComponent implements AfterViewInit, OnDestroy {
+export class MobComponent implements OnInit, AfterViewInit, OnDestroy {
   /**
    * your call card
    */
   public callCard: string
 
   private walkingAnimation: Animation;
+  private collisionSubscription: Subscription;
 
   constructor(
     private mobEle: ElementRef<HTMLElement>,
     private container: GameContainer,
-    private spawn: SpawnCommunicator) { }
+    private spawn: SpawnCommunicator,
+    private collision: CollisionService) { }
+  
+  
+  ngOnInit(): void {
+    this.mobEle.nativeElement.dataset['callingcard'] = this.callCard;
+
+    this.collision.register('mob', this.mobEle.nativeElement);
+
+    this.collisionSubscription = this.collision.collisionDetect()
+      .pipe(
+        map(mbs => mbs.some(m => m === this.callCard)),
+        distinctUntilChanged())
+      .subscribe((hasCollided) => {
+        if (hasCollided) {
+          this.walkingAnimation.pause();
+        } else {
+          this.walkingAnimation?.playState === 'paused' && this.walkingAnimation.play();
+        }
+      });
+  }
   
   ngAfterViewInit(): void {
     const mobWalking: Keyframe[] = [
@@ -59,5 +80,7 @@ export class MobComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.walkingAnimation.cancel();
+    this.collision.unregister('mob', this.mobEle.nativeElement);
+    this.collisionSubscription.unsubscribe();
   }
 }

@@ -7,6 +7,7 @@ import { HeroModule } from './hero/hero.module';
 import { ControllerService } from './services/controller/controller.service';
 import { MobModule } from './mob/mob.module';
 import { ContainerModule } from './container/container.module';
+import { CollisionService } from './services/collision.service';
 
 
 @NgModule({
@@ -20,6 +21,6 @@ import { ContainerModule } from './container/container.module';
     MobModule,
     ContainerModule
   ],
-  providers: [ControllerService]
+  providers: [ControllerService, CollisionService]
 })
 export class GameOnModule { }
