@@ -1,7 +1,7 @@
 import {
   Component, OnInit, ChangeDetectionStrategy, ViewChild, ElementRef, OnDestroy
 } from '@angular/core';
-import { combineLatest, distinctUntilChanged, map, Observable, Subscription } from 'rxjs';
+import { combineLatest, distinctUntilChanged, map, Observable, Subscription, tap } from 'rxjs';
 import { CollisionService } from '../services/collision/collision.service';
 import { ControllerService } from '../services/controller/controller.service';
 
@@ -24,11 +24,10 @@ export class HeroComponent implements OnInit, OnDestroy {
   public body: ElementRef<HTMLElement>;
 
   /**
-   * puff - when nothing is there to hit
    * pow - when there's a mob to hit
    * empty string - idle
    */
-  public attack$: Observable<'puff'|'pow'|''>;
+  public attack$: Observable<'pow'|''>;
 
   private subscriptions = new Subscription();
 
@@ -57,11 +56,10 @@ export class HeroComponent implements OnInit, OnDestroy {
     this.collision.register('hero', this.body.nativeElement);
 
     this.attack$ = combineLatest([
-      this.collision.collisionDetect().pipe(map(mbs => mbs.length > 0)),
+      this.collision.collisionDetect().pipe(map(mbs => mbs.length > 0), distinctUntilChanged()),
       this.controller.attack()])
       .pipe(
-        map(([hasMob, attacking]) => attacking ? (hasMob ? 'pow' : 'puff') : ''),
-        distinctUntilChanged());
+        map(([hasMob, attacking]) => attacking && hasMob ? 'pow' : ''));
   }
 
   ngOnDestroy(): void {

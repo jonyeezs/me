@@ -2,8 +2,7 @@ import {
   Component, ChangeDetectionStrategy,
   ElementRef, OnDestroy, AfterViewInit, OnInit,
 } from '@angular/core';
-import { combineLatest, distinctUntilChanged, map, Subject, takeUntil } from 'rxjs';
-import { difference } from 'lodash-es';
+import { distinctUntilChanged, map, of, Subject, switchMap, takeUntil } from 'rxjs';
 import { GameContainer } from '../container/container.token';
 import { CollisionService } from '../services/collision/collision.service';
 import { ControllerService } from '../services/controller/controller.service';
@@ -11,7 +10,7 @@ import { SpawnCommunicator } from './spawn.token';
 
 @Component({
   selector: 'app-mob',
-  template: ``,
+  template: `{{ callCard }}`,
   styles: [
     `
       :host {
@@ -34,7 +33,7 @@ export class MobComponent implements OnInit, AfterViewInit, OnDestroy {
    */
   public callCard: string
 
-  private HP = 3;
+  private HP: number;
   private walkingAnimation: Animation;
   private killCode = new Subject<void>();
 
@@ -47,6 +46,7 @@ export class MobComponent implements OnInit, AfterViewInit, OnDestroy {
   
   
   ngOnInit(): void {
+    this.HP = 3;
     this.mobEle.nativeElement.dataset['callingcard'] = this.callCard;
 
     this.collision.register('mob', this.mobEle.nativeElement);
@@ -93,20 +93,18 @@ export class MobComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private battlePrep() {
-    combineLatest([
-      this.collision.collisionDetect().pipe(
-        distinctUntilChanged((prev, curr) => difference(curr, prev).length === 0),
-        map(mbs => mbs.some(m => m === this.callCard))),
-      this.controller.attack()]).pipe(
-      takeUntil(this.killCode)
-    ).subscribe(([hasCollided, isAttacked]) => {
-      if (!hasCollided || !isAttacked) {
+    this.collision.collisionDetect().pipe(
+      map(mbs => mbs.some(m => m === this.callCard)),
+      distinctUntilChanged(),
+      switchMap((hasCollided) => hasCollided ? this.controller.attack() : of(false)),
+      takeUntil(this.killCode),).pipe(
+    ).subscribe((isAttacked) => {
+      if (!isAttacked) {
         return;
       }
 
       this.HP--;
-
-      if (this.HP === 0) {
+      if (this.HP <= 0) {
         this.killCode.next();
         this.spawn.done(this.callCard);
       }
