@@ -1,27 +1,25 @@
 import {
-  Component, OnInit, ChangeDetectionStrategy, ViewChild, ElementRef, OnDestroy
+  Component, OnInit, ChangeDetectionStrategy, ElementRef, OnDestroy, Self
 } from '@angular/core';
-import { combineLatest, distinctUntilChanged, map, Observable, Subscription, tap } from 'rxjs';
+import { combineLatest, distinctUntilChanged, map, Observable, Subscription } from 'rxjs';
 import { CollisionService } from '../services/collision/collision.service';
 import { ControllerService } from '../services/controller/controller.service';
 
 @Component({
   selector: 'app-hero',
   template: `
-    <div #body class="w-8 h-10 bg-slate-700 translate-x-0 will-change-transform">
       <ng-container *ngIf="attack$ | async as attack">
         <div>
           {{ attack }}
         </div>
-      </ng-container>  
-    </div>
+      </ng-container>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  styles: [':host { display: block; }'], 
+  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+  host: { 'class': 'w-8 h-10 bg-slate-700 translate-x-0 will-change-transform' },
 })
 export class HeroComponent implements OnInit, OnDestroy {
-
-  @ViewChild('body', { static: true, read: ElementRef })
-  public body: ElementRef<HTMLElement>;
 
   /**
    * pow - when there's a mob to hit
@@ -34,7 +32,10 @@ export class HeroComponent implements OnInit, OnDestroy {
   private readonly MOVEMENT = '--tw-translate-x';
   private readonly STEPSIZE = 3;
 
-  constructor(private controller: ControllerService, private collision: CollisionService) { }
+  constructor(
+    private controller: ControllerService,
+    private collision: CollisionService,
+    @Self() private body: ElementRef) { }
   
   ngOnInit(): void {
     this.subscriptions.add(

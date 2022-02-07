@@ -6,6 +6,7 @@ import { distinctUntilChanged, map, of, Subject, switchMap, takeUntil } from 'rx
 import { GameContainer } from '../container/container.token';
 import { CollisionService } from '../services/collision/collision.service';
 import { ControllerService } from '../services/controller/controller.service';
+import { XpService } from '../services/xp/xp.service';
 import { SpawnCommunicator } from './spawn.token';
 
 @Component({
@@ -42,7 +43,8 @@ export class MobComponent implements OnInit, AfterViewInit, OnDestroy {
     private container: GameContainer,
     private spawn: SpawnCommunicator,
     private collision: CollisionService,
-    private controller: ControllerService) { }
+    private controller: ControllerService,
+    private xp: XpService) { }
   
   
   ngOnInit(): void {
@@ -107,6 +109,7 @@ export class MobComponent implements OnInit, AfterViewInit, OnDestroy {
       if (this.HP <= 0) {
         this.killCode.next();
         this.spawn.done(this.callCard);
+        this.xp.provideXp(1);
       }
     });
   }

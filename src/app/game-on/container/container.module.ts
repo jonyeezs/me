@@ -6,7 +6,7 @@ import { ContainerComponent } from './container.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
   ],
   declarations: [
     ContainerComponent
