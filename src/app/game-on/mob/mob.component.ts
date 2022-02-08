@@ -7,6 +7,7 @@ import { GameContainer } from '../container/container.token';
 import { CollisionService } from '../services/collision/collision.service';
 import { ControllerService } from '../services/controller/controller.service';
 import { XpService } from '../services/xp/xp.service';
+import { pauseResume } from '../utils/pause-resume.rxjs';
 import { SpawnCommunicator } from './spawn.token';
 
 @Component({
@@ -66,6 +67,16 @@ export class MobComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       });
     
+    this.controller.playStateChange().pipe(takeUntil(this.killCode))
+      .subscribe(state => {
+        if (state === 'pause' && this.walkingAnimation.playState !== 'paused') {
+          this.walkingAnimation.pause();
+        }
+        if (state === 'resume' && this.walkingAnimation.playState === 'paused') {
+          this.walkingAnimation.play();
+        }
+      });
+    
     this.battlePrep();
   }
   
@@ -99,7 +110,8 @@ export class MobComponent implements OnInit, AfterViewInit, OnDestroy {
       map(mbs => mbs.some(m => m === this.callCard)),
       distinctUntilChanged(),
       switchMap((hasCollided) => hasCollided ? this.controller.attack() : of(false)),
-      takeUntil(this.killCode),).pipe(
+      pauseResume(this.controller),
+      takeUntil(this.killCode)).pipe(
     ).subscribe((isAttacked) => {
       if (!isAttacked) {
         return;

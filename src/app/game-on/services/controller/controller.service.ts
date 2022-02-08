@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 
-import { filter, fromEvent, map, mergeWith, Observable } from 'rxjs';
+import { filter, fromEvent, map, mergeWith, Observable, Subject } from 'rxjs';
 
 @Injectable()
 export class ControllerService {
 
-  constructor() { }
+  private playStateStream: Subject<'pause' | 'resume'>;
+
+  constructor() { 
+    this.playStateStream = new Subject();
+  }
 
   public left(): Observable<boolean> {
     return fromEvent<KeyboardEvent>(document, 'keydown')
@@ -31,11 +35,16 @@ export class ControllerService {
     )
   }
 
-  public stop(): Observable<boolean> {
-     return fromEvent<KeyboardEvent>(document, 'keyup')
-      .pipe(
-        map(() => true)
-      );
+  public pause() {
+    this.playStateStream.next('pause');
+  }
+
+  public resume() {
+    this.playStateStream.next('resume');
+  }
+
+  public playStateChange(): Observable<'pause' | 'resume'> {
+    return this.playStateStream.asObservable();
   }
 
   public continue(): Observable<boolean> {

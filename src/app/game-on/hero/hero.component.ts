@@ -4,6 +4,7 @@ import {
 import { combineLatest, distinctUntilChanged, map, Observable, Subscription } from 'rxjs';
 import { CollisionService } from '../services/collision/collision.service';
 import { ControllerService } from '../services/controller/controller.service';
+import { pauseResume } from '../utils/pause-resume.rxjs';
 
 @Component({
   selector: 'app-hero',
@@ -39,7 +40,9 @@ export class HeroComponent implements OnInit, OnDestroy {
   
   ngOnInit(): void {
     this.subscriptions.add(
-      this.controller.right().subscribe(() => {
+      this.controller.right().pipe(
+        pauseResume(this.controller)
+      ).subscribe(() => {
         const currentPosition = this.retrievePosition();
         const newPos = currentPosition + this.STEPSIZE;
         this.body.nativeElement.style.setProperty(this.MOVEMENT, `${newPos}px`);
@@ -47,7 +50,9 @@ export class HeroComponent implements OnInit, OnDestroy {
     );
 
     this.subscriptions.add(
-      this.controller.left().subscribe(() => {
+      this.controller.left().pipe(
+        pauseResume(this.controller)
+      ).subscribe(() => {
         const currentPosition = this.retrievePosition();
         const newPos = currentPosition - this.STEPSIZE;
         this.body.nativeElement.style.setProperty(this.MOVEMENT, `${newPos}px`);
@@ -58,8 +63,10 @@ export class HeroComponent implements OnInit, OnDestroy {
 
     this.attack$ = combineLatest([
       this.collision.collisionDetect().pipe(map(mbs => mbs.length > 0), distinctUntilChanged()),
-      this.controller.attack()])
+      this.controller.attack()
+      ])
       .pipe(
+        pauseResume(this.controller),
         map(([hasMob, attacking]) => attacking && hasMob ? 'pow' : ''));
   }
 

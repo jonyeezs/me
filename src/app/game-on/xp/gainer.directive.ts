@@ -5,6 +5,7 @@ import { ComponentPortal } from '@angular/cdk/portal';
 import { filter, Subscription, tap } from 'rxjs';
 import { XpService } from '../services/xp/xp.service';
 import { XpViewerComponent } from './xp-viewer.component';
+import { ControllerService } from '../services/controller/controller.service';
 
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
@@ -17,7 +18,8 @@ export class GainerDirective implements OnInit, OnDestroy {
   constructor(
     private xp: XpService,
     @Host() private character: ElementRef<HTMLElement>,
-    private overlay: Overlay) { }
+    private overlay: Overlay,
+    private controller: ControllerService) { }
   
   ngOnInit(): void {
     this.xpCeremonyInProgress = false;
@@ -30,21 +32,32 @@ export class GainerDirective implements OnInit, OnDestroy {
       }])
       .withLockedPosition()
       .withGrowAfterOpen();
-    
-    this.xpSubscription = this.xp.xpGain().pipe(
-      filter(() => !this.xpCeremonyInProgress),
-      tap(() => { this.xpCeremonyInProgress = true; })
-    ).subscribe(() => {
-      const pos = this.character.nativeElement.getBoundingClientRect();
       const overlayRef = this.overlay.create({
         disposeOnNavigation: false,
         hasBackdrop: false,
         positionStrategy,
         width: '60%',
+        height: `60%`
+      });
+    
+    this.xpSubscription = this.xp.xpGain().pipe(
+      filter(() => !this.xpCeremonyInProgress),
+      tap(() => { this.xpCeremonyInProgress = true; })
+    ).subscribe(() => {
+      this.controller.pause();
+      const pos = this.character.nativeElement.getBoundingClientRect();
+      overlayRef.updateSize({
+        width: '60%',
         height: `${pos.y * 75 / 100}px`
       });
       const xpViewerPortal = new ComponentPortal(XpViewerComponent);
-      overlayRef.attach(xpViewerPortal);
+      const ref = overlayRef.attach(xpViewerPortal);
+      ref.instance.close.then(() => {
+        ref.destroy();
+        overlayRef.detach();
+        this.xpCeremonyInProgress = false;
+        this.controller.resume();
+      });
     });
   }
 

@@ -2,13 +2,15 @@ import {
   AnimationEvent, transition,
   animate, trigger, keyframes, style
 } from '@angular/animations';
-import { Component, OnInit, ChangeDetectionStrategy, Renderer2 } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Renderer2, OnDestroy } from '@angular/core';
+import { Subscription, take } from 'rxjs';
+import { ControllerService } from '../services/controller/controller.service';
 
 @Component({
   selector: 'app-xp-viewer',
   template: `
     <div [@xpGainedAnimation]="showXpGained" (@xpGainedAnimation.done)="captureDoneEvent($event)"
-      class="p-4 h-9/12 overflow-auto
+      class="p-4 h-11/12 overflow-auto
       border-4 border-solid border-blue-900 rounded-lg
     bg-neutral-200 opacity-0">
       <h1 class="font-bold">Experience gained in passion</h1>
@@ -17,6 +19,9 @@ import { Component, OnInit, ChangeDetectionStrategy, Renderer2 } from '@angular/
         I wonder if this make sense what it is about
         I wonder if this make sense what it is about
         I wonder if this make sense what it is about
+      </p>
+      <p class="mt-5 text-right">
+        <kbd>O</kbd> to continue
       </p>
     </div>
     <div @xpFloatAnimation (@xpFloatAnimation.done)="captureDoneEvent($event)" 
@@ -46,17 +51,35 @@ import { Component, OnInit, ChangeDetectionStrategy, Renderer2 } from '@angular/
         style({ offset: 0, opacity: 0 }),
         style({ offset: 1, opacity: 1 }),
       ]))),
+      transition(":leave", animate('400ms ease-in', keyframes([
+        style({ offset: 0, opacity: 0, transform: 'scale(0)' }),
+        style({ offset: 1, opacity: 1, transform: 'scale(0.5)' }),
+      ])))
     ]),
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class XpViewerComponent implements OnInit {
+export class XpViewerComponent implements OnInit, OnDestroy {
   public showXpGained: boolean;
 
-  constructor(private renderer: Renderer2) { }
+  public get close() {
+    return new Promise<void>((resolve) => {
+      this.closeCallBack = resolve;
+    });
+  }
 
+  private closeCallBack = () => {}
+
+  private xpDoneSubscription: Subscription;
+
+  constructor(private renderer: Renderer2, private controller: ControllerService) { }
+  
   ngOnInit(): void {
     this.showXpGained = false;
+  }
+  
+  ngOnDestroy(): void {
+    this.xpDoneSubscription?.unsubscribe();
   }
 
   captureDoneEvent(event: AnimationEvent) {
@@ -67,6 +90,10 @@ export class XpViewerComponent implements OnInit {
 
     if (event.triggerName === 'xpGainedAnimation') {
       this.renderer.setStyle(event.element, 'opacity', 1);
+
+      this.xpDoneSubscription = this.controller.continue().pipe(take(1)).subscribe(() => {
+        this.closeCallBack();
+      })
     }
   }
 
