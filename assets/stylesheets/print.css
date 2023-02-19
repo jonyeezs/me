@@ -3,18 +3,42 @@
         width: 70vw;
     }
 
-    .contact-location .below-name {
-        right: 7px;
+    .contact-container__heading .contact-location {
+        left: calc(100% - 19ch);
+        font-size: 9px;
     }
 
-    .social-list li {
-        width: fit-content;
+    .contact-location .below-name {
+        right: 0;
+    }
+
+    .contact-email, .contact-mobile {
+        margin-left: 2%;
+        width: 100%;
+    }
+
+    .social-list {
+        flex-wrap: wrap;
+    }
+
+    .contact-media {
+        margin-right: 2%;
+        padding-right: 0;
+    }
+
+    .contact-media .social-list>li {
+        margin: 0;
+        width: 50%;
+    }
+
+    .social-list li:last-child,
+    .social-list li:nth-last-child(2) {
+        margin-top: 8px;
     }
 
     .social-link {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+        display: grid;
+        place-content: center;
     }
 
     .social-link span {
@@ -56,5 +80,17 @@
     .job-info,
     p {
         break-inside: avoid;
+    }
+
+    .expertise-skills table.open-table {
+        width: 90%;
+    }
+
+    .expertise-skills table td {
+        font-size: 4.5vw;
+    }
+
+    [title="AngularJS"] {
+        display: none !important;
     }
 }
