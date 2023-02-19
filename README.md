@@ -9,7 +9,7 @@ That's it.
 
 ## To develop
 
-1. `sudo gem install sass`
+1. `brew install sass/sass/sass`
 1. `sass --watch _sass:assets/stylesheets --style compressed`
 
 ### Acknowledgements

@@ -98,6 +98,22 @@ $timeline-marker-size: 16px;
   }
 }
 
+.job-stack {
+  >[aria-label] {
+    font-size: 1em;
+    display: inline;
+  }
+
+  justify-self: stretch;
+  font-size: 0.8em;
+  margin-top: $padded-size;
+  text-align: justify;
+}
+
+.job-achievement {
+  margin-top: $padded-size;
+}
+
 .highlight {
   &-main {
     color: darken($highlight-blue, 30%);

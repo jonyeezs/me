@@ -50,6 +50,12 @@
   vertical-align: super;
 }
 
+.title-with-colon {
+  &:after {
+    content: ": "
+  }
+}
+
 .unlist {
   list-style-type: none;
   padding-left: 0;
@@ -62,6 +68,21 @@
 
   a {
     margin: auto;
+  }
+}
+
+.comma-list {
+  display: inline;
+  li {
+    display: inline;
+  }
+
+  li:after {
+    content: ", ";
+  }
+
+  li:last-child:after {
+    content: "";
   }
 }
 
