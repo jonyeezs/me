@@ -50,7 +50,7 @@ $timeline-marker-size: 16px;
     grid-template: {
       areas: "left right" "#{$bottom-area}";
       columns: auto;
-      rows: 1fr 1fr;
+      rows: auto 1fr;
     }
     width: 100%;
     .highlight {
@@ -111,7 +111,7 @@ $timeline-marker-size: 16px;
 }
 
 .job-achievement {
-  margin-top: $padded-size;
+  margin-top: $padded-size / 2;
 }
 
 .highlight {
