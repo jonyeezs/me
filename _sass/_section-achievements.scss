@@ -107,7 +107,8 @@ $timeline-marker-size: 16px;
 
   justify-self: stretch;
   font-size: 0.9em;
-  margin-top: $padded-size;
+  margin-top: $padded-size / 2;
+  margin-bottom: $padded-size;
   text-align: justify;
 }
 
