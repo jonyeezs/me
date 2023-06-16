@@ -42,8 +42,9 @@
     hyphens: none;
 
     em {
-      color: $dark-colour;
-      text-decoration: underline $highlight-blue;
+      color: $highlight-blue;
+      font-style: normal;
+      font-weight: 700;
       white-space: nowrap;
     }
   }
