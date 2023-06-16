@@ -99,6 +99,7 @@ $timeline-marker-size: 16px;
 }
 
 .job-stack {
+  color: $highlight-blue;
   >[aria-label] {
     font-size: 1em;
     display: inline;
