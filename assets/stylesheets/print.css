@@ -93,4 +93,8 @@
     [title="AngularJS"] {
         display: none !important;
     }
-}
+
+    .section-achievement .timeline .job-info {
+            grid-template-columns: 33ch auto;
+        }
+    }
