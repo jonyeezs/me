@@ -1,6 +1,10 @@
 @media print {
     .section {
-        width: 70vw;
+        width: 90vw;
+    }
+
+    .expertise-container {
+        page-break-after: always;
     }
 
     .contact-container__heading .contact-location {
@@ -12,7 +16,8 @@
         right: 0;
     }
 
-    .contact-email, .contact-mobile {
+    .contact-email,
+    .contact-mobile {
         margin-left: 2%;
         width: 100%;
     }
@@ -29,11 +34,7 @@
     .contact-media .social-list>li {
         margin: 0;
         width: 50%;
-    }
-
-    .social-list li:last-child,
-    .social-list li:nth-last-child(2) {
-        margin-top: 8px;
+        margin-bottom: 8px;
     }
 
     .social-link {
@@ -54,6 +55,10 @@
         margin-top: 0px;
     }
 
+    .expertise-passion__about-me em {
+        letter-spacing: 1px;
+    }
+
     .expertise-skills .table-heading {
         width: 45%;
     }
@@ -65,8 +70,10 @@
     .expertise-skills .table-heading .tooltip-popup {
         margin-bottom: 18px;
         max-height: max-content;
-        font-size: 10px;
+        font-size: 9px;
         font-style: italic;
+        font-weight: 400;
+        letter-spacing: 1px;
     }
 
     p {
@@ -86,6 +93,20 @@
         width: 90%;
     }
 
+    .expertise-skills .open-table tr {
+        padding-bottom: 8px;
+        border-bottom: #d4d4d4 2px solid;
+    }
+
+    .expertise-skills .open-table tr:last-child {
+        border-bottom: none;
+    }
+
+    .expertise-skills .open-table .table-heading {
+        border-left: none;
+        padding-top: 10px;
+    }
+
     .expertise-skills table td {
         font-size: 4.5vw;
     }
@@ -94,7 +115,11 @@
         display: none !important;
     }
 
-    .section-achievement .timeline .job-info {
-            grid-template-columns: 33ch auto;
-        }
+    .section-achievement {
+        border-top: none;
     }
+
+    .section-achievement .timeline .job-info {
+        grid-template-columns: 33ch auto;
+    }
+}
